@@ -4,17 +4,9 @@ import com.example.SenderEmail.model.Email;
 import com.example.SenderEmail.service.EmailService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-
-import java.util.ArrayList;
 
 @SpringBootApplication
 public class SenderEmailApplication {
-    private EmailService emailService;
-
-    public SenderEmailApplication(EmailService emailService) {
-        this.emailService = emailService;
-    }
 
     public static void main(String[] args) {
         // SpringApplication.run(SenderEmailApplication.class, args);
@@ -22,6 +14,7 @@ public class SenderEmailApplication {
         ApplicationContext context = SpringApplication.run(SenderEmailApplication.class, args);
         SenderEmailApplication app = context.getBean(SenderEmailApplication.class);
 //        app.Run();
+        SpringApplication.run(SenderEmailApplication.class, args);
     }
 
 //    private void Run() {
