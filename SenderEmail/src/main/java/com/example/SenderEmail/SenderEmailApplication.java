@@ -9,11 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SenderEmailApplication {
 
     public static void main(String[] args) {
-        // SpringApplication.run(SenderEmailApplication.class, args);
-
-        ApplicationContext context = SpringApplication.run(SenderEmailApplication.class, args);
-        SenderEmailApplication app = context.getBean(SenderEmailApplication.class);
-//        app.Run();
+        Dotenv dotenv = Dotenv.load();
         SpringApplication.run(SenderEmailApplication.class, args);
     }
 
