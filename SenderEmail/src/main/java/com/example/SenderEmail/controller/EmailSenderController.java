@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping( "/email")
+@RequestMapping("/email")
 public class EmailSenderController {
 
     @Autowired
@@ -28,9 +28,10 @@ public class EmailSenderController {
                     @ApiResponse(responseCode = "401", description = "When An Authorization Error Occurred")
             }
     )
-    @PostMapping( "/send-email")
-    public void sendEmail(@RequestBody Email email){
+    @PostMapping("/send-email")
+    public void sendEmail(@RequestBody Email email) {
         emailService.sendEmail(email);
+
     }
 
 }
