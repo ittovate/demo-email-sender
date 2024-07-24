@@ -1,24 +1,23 @@
 package com.example.SenderEmail.exception;
 
 public class ErrorResponse {
-    private int statusCode ;
-    private  String  message ;
+    private final int STATUS_CODE;
+    private final String  MESSAGE;
 
 
-    public ErrorResponse(int statusCode, String message) {
-        this.statusCode = statusCode;
-        this.message = message;
+    public ErrorResponse(int STATUS_CODE, String MESSAGE) {
+        this.STATUS_CODE = STATUS_CODE;
+        this.MESSAGE = MESSAGE;
 
     }
 
-    public int getStatusCode() {
-        return statusCode;
+    public int getSTATUS_CODE() {
+        return STATUS_CODE;
     }
 
     public String getMessage() {
-        return message;
+        return MESSAGE;
     }
-
 
 
 }
