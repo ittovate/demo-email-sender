@@ -23,7 +23,6 @@ public class EmailService {
 
     @Async
     public void sendEmail(Email email) {
-        System.out.println("username:::: " + username);
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(username);
         message.setTo(email.getTo());
