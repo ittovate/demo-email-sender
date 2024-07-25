@@ -12,13 +12,11 @@ import org.springframework.web.server.ResponseStatusException;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity<ErrorResponse> handleResponseStatusException(ResponseStatusException ex) {
         int statusCode = ex.getStatusCode().value();
         String message = ex.getReason();
-        LOGGER.error("handle Response Status Exception: {} ", message);
         ErrorResponse errorResponse = new ErrorResponse(statusCode, message);
         return new ResponseEntity<>(errorResponse, ex.getStatusCode());
     }
