@@ -47,6 +47,13 @@
 			<version>2.2.0</version>
 		</dependency>
 		<!--  ## End Secret Enviroment ##  -->
+
+<!--	## Start  Aspect Oriented  Programming  ## -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+<!--	## End Aspect Oriented Programming   ## -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
