@@ -40,12 +40,20 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+        <!--  ## Start Secret Enviroment ##  -->
 		<dependency>
 			<groupId>io.github.cdimascio</groupId>
 			<artifactId>dotenv-java</artifactId>
 			<version>2.2.0</version>
 		</dependency>
+		<!--  ## End Secret Enviroment ##  -->
+
+<!--	## Start  Aspect Oriented  Programming  ## -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+<!--	## End Aspect Oriented Programming   ## -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -56,6 +64,11 @@
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.cdimascio</groupId>
+			<artifactId>dotenv-java</artifactId>
+			<version>2.2.0</version>
 		</dependency>
 	</dependencies>
 
