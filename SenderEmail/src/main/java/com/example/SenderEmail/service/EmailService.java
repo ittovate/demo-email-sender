@@ -21,15 +21,14 @@ public class EmailService {
         this.mailSender = mailSender;
     }
 
-//    @Async
+    @Async
     public void sendEmail(Email email) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(username);
         message.setTo(email.getTo());
         message.setSubject(email.getSubject());
         message.setText(email.getBody());
-//        mailSender.send(message);
-        throw new RuntimeException("run time exception ");
+        mailSender.send(message);
     }
 
 
