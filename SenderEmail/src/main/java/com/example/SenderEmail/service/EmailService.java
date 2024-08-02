@@ -8,9 +8,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.List;
-
 @Service
 @ConfigurationProperties(prefix = "spring.mail")
 public class EmailService {
@@ -24,15 +21,18 @@ public class EmailService {
         this.mailSender = mailSender;
     }
 
-    @Async
+//    @Async
     public void sendEmail(Email email) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(username);
         message.setTo(email.getTo());
         message.setSubject(email.getSubject());
         message.setText(email.getBody());
-        mailSender.send(message);
+//        mailSender.send(message);
+        throw new RuntimeException("run time exception ");
     }
+
+
 
     public String getUsername() {
         return username;
