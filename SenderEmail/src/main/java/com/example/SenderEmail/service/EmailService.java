@@ -2,6 +2,7 @@ package com.example.SenderEmail.service;
 
 import com.example.SenderEmail.exception.ErrorResponse;
 import com.example.SenderEmail.model.Email;
+import com.example.SenderEmail.utils.validations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.http.HttpStatus;
@@ -23,16 +24,16 @@ import java.util.regex.Pattern;
 public class EmailService {
 
     private static final Logger logger = LoggerFactory.getLogger(EmailService.class);
-
+    private final validations emailValidator;
     private String username;
     private final JavaMailSender mailSender;
 
+
     @Autowired
-    public EmailService(JavaMailSender mailSender) {
-
+    public EmailService(JavaMailSender mailSender )  {
         this.mailSender = mailSender;
+        this.emailValidator = new validations();
     }
-
     @Async
     public Future<ResponseEntity<ErrorResponse>> sendEmail (Email email) {
 
@@ -61,25 +62,12 @@ public class EmailService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, " Error : The subject of email is empty");
         }
 
-        if (! areValidEmails(email.getTo())) {
+        if (!emailValidator.areValidEmails(email.getTo())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, " Error :One or more recipient email addresses are invalid.");
         }
 
     }
 
-    private boolean areValidEmails(String[] emails) {
-        if (emails == null) {
-            return false;
-        }
-        String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
-        Pattern pattern = Pattern.compile(emailRegex);
-        for (String email : emails) {
-            if (!pattern.matcher(email).matches()) {
-                return false;
-            }
-        }
-        return true;
-    }
 
     public String getUsername() {
         return username;
@@ -87,6 +75,11 @@ public class EmailService {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+
+    public int add( int x , int y ){
+        return x+ y ;
     }
 
 }
