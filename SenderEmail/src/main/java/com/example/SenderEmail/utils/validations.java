@@ -18,6 +18,14 @@ public class validations {
         return true;
     }
 
+
+
+
+
+
+
+
+
  public boolean  isValidEmail(String  email ){
      if (email == null) {
          return false;
