@@ -30,10 +30,12 @@ public class EmailService {
 
 
     @Autowired
-    public EmailService(JavaMailSender mailSender )  {
+    public EmailService(JavaMailSender mailSender , validations emailValidator )  {
         this.mailSender = mailSender;
-        this.emailValidator = new validations();
+        this.emailValidator = emailValidator;
+
     }
+
     @Async
     public Future<ResponseEntity<ErrorResponse>> sendEmail (Email email) {
 
@@ -77,9 +79,5 @@ public class EmailService {
         this.username = username;
     }
 
-
-    public int add( int x , int y ){
-        return x+ y ;
-    }
 
 }

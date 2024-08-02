@@ -1,7 +1,9 @@
 package com.example.SenderEmail.utils;
 
-import java.util.regex.Pattern;
+import org.springframework.stereotype.Component;
 
+import java.util.regex.Pattern;
+@Component
 public class validations {
 
     public boolean areValidEmails(String[] emails) {
@@ -10,13 +12,13 @@ public class validations {
         }
 
         for (String email : emails) {
-            if( !isValidEmails( email ))
+            if( !isValidEmail( email ))
                 return false;
         }
         return true;
     }
 
- public boolean  isValidEmails(String  email ){
+ public boolean  isValidEmail(String  email ){
      if (email == null) {
          return false;
      }

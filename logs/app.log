@@ -1,0 +1,127 @@
+2024-08-02T14:48:55.374+03:00  INFO 6500 --- [main] c.e.SenderEmail.SenderEmailApplication   : Starting SenderEmailApplication using Java 22.0.2 with PID 6500 (/home/mostafahussien/IdeaProjects/SenderEmail/SenderEmail/target/classes started by mostafahussien in /home/mostafahussien/IdeaProjects/SenderEmail)
+2024-08-02T14:48:55.384+03:00  INFO 6500 --- [main] c.e.SenderEmail.SenderEmailApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-08-02T14:48:56.939+03:00  INFO 6500 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-02T14:48:56.949+03:00  INFO 6500 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-02T14:48:56.949+03:00  INFO 6500 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-02T14:48:56.987+03:00  INFO 6500 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-02T14:48:56.988+03:00  INFO 6500 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1557 ms
+2024-08-02T14:48:58.203+03:00  INFO 6500 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 4 endpoint(s) beneath base path '/actuator'
+2024-08-02T14:48:58.286+03:00  INFO 6500 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-08-02T14:48:58.300+03:00  INFO 6500 --- [main] c.e.SenderEmail.SenderEmailApplication   : Started SenderEmailApplication in 3.312 seconds (process running for 3.916)
+2024-08-02T14:48:58.803+03:00  INFO 6500 --- [RMI TCP Connection(2)-192.168.1.16] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-02T14:48:58.804+03:00  INFO 6500 --- [RMI TCP Connection(2)-192.168.1.16] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-02T14:48:58.808+03:00  INFO 6500 --- [RMI TCP Connection(2)-192.168.1.16] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2024-08-02T17:25:56.783+03:00  INFO 24995 --- [main] c.e.SenderEmail.SenderEmailApplication   : Starting SenderEmailApplication using Java 22.0.2 with PID 24995 (/home/mostafahussien/IdeaProjects/SenderEmail/SenderEmail/target/classes started by mostafahussien in /home/mostafahussien/IdeaProjects/SenderEmail)
+2024-08-02T17:25:56.784+03:00  INFO 24995 --- [main] c.e.SenderEmail.SenderEmailApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-08-02T17:25:57.716+03:00  INFO 24995 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-02T17:25:57.732+03:00  INFO 24995 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 JPA repository interfaces.
+2024-08-02T17:25:58.351+03:00  INFO 24995 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-02T17:25:58.361+03:00  INFO 24995 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-02T17:25:58.361+03:00  INFO 24995 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-02T17:25:58.402+03:00  INFO 24995 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-02T17:25:58.402+03:00  INFO 24995 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1557 ms
+2024-08-02T17:25:58.603+03:00  WARN 24995 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'dataSourceScriptDatabaseInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception with message: Failed to determine a suitable driver class
+2024-08-02T17:25:58.605+03:00  INFO 24995 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-08-02T17:25:58.623+03:00  INFO 24995 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-08-02T17:25:58.660+03:00 ERROR 24995 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+2024-08-02T17:26:30.764+03:00  INFO 25234 --- [main] c.e.SenderEmail.SenderEmailApplication   : Starting SenderEmailApplication using Java 22.0.2 with PID 25234 (/home/mostafahussien/IdeaProjects/SenderEmail/SenderEmail/target/classes started by mostafahussien in /home/mostafahussien/IdeaProjects/SenderEmail)
+2024-08-02T17:26:30.765+03:00  INFO 25234 --- [main] c.e.SenderEmail.SenderEmailApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-08-02T17:26:32.049+03:00  INFO 25234 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-02T17:26:32.061+03:00  INFO 25234 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-02T17:26:32.061+03:00  INFO 25234 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-02T17:26:32.107+03:00  INFO 25234 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-02T17:26:32.108+03:00  INFO 25234 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1297 ms
+2024-08-02T17:26:33.339+03:00  INFO 25234 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 4 endpoint(s) beneath base path '/actuator'
+2024-08-02T17:26:33.420+03:00  INFO 25234 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-08-02T17:26:33.437+03:00  INFO 25234 --- [main] c.e.SenderEmail.SenderEmailApplication   : Started SenderEmailApplication in 3.036 seconds (process running for 3.54)
+2024-08-02T17:26:33.755+03:00  INFO 25234 --- [RMI TCP Connection(2)-192.168.1.16] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-02T17:26:33.756+03:00  INFO 25234 --- [RMI TCP Connection(2)-192.168.1.16] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-02T17:26:33.757+03:00  INFO 25234 --- [RMI TCP Connection(2)-192.168.1.16] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-08-02T17:28:35.608+03:00  WARN 25234 --- [RMI TCP Connection(1)-192.168.1.16] o.s.b.actuate.mail.MailHealthIndicator   : Mail health check failed
+
+jakarta.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials ffacd0b85a97d-36bbcf1e0bcsm2093340f8f.30 - gsmtp
+
+	at org.eclipse.angus.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:954) ~[jakarta.mail-2.0.3.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:865) ~[jakarta.mail-2.0.3.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:769) ~[jakarta.mail-2.0.3.jar:na]
+	at jakarta.mail.Service.connect(Service.java:345) ~[jakarta.mail-2.0.3.jar:na]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:480) ~[spring-context-support-6.1.11.jar:6.1.11]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.testConnection(JavaMailSenderImpl.java:360) ~[spring-context-support-6.1.11.jar:6.1.11]
+	at org.springframework.boot.actuate.mail.MailHealthIndicator.doHealthCheck(MailHealthIndicator.java:52) ~[spring-boot-actuator-3.2.8.jar:3.2.8]
+	at org.springframework.boot.actuate.health.AbstractHealthIndicator.health(AbstractHealthIndicator.java:82) ~[spring-boot-actuator-3.2.8.jar:3.2.8]
+	at org.springframework.boot.actuate.health.HealthIndicator.getHealth(HealthIndicator.java:37) ~[spring-boot-actuator-3.2.8.jar:3.2.8]
+	at org.springframework.boot.actuate.health.HealthEndpoint.getHealth(HealthEndpoint.java:82) ~[spring-boot-actuator-3.2.8.jar:3.2.8]
+	at org.springframework.boot.actuate.health.HealthEndpoint.getHealth(HealthEndpoint.java:41) ~[spring-boot-actuator-3.2.8.jar:3.2.8]
+	at org.springframework.boot.actuate.health.HealthEndpointSupport.getLoggedHealth(HealthEndpointSupport.java:172) ~[spring-boot-actuator-3.2.8.jar:3.2.8]
+	at org.springframework.boot.actuate.health.HealthEndpointSupport.getContribution(HealthEndpointSupport.java:145) ~[spring-boot-actuator-3.2.8.jar:3.2.8]
+	at org.springframework.boot.actuate.health.HealthEndpointSupport.getAggregateContribution(HealthEndpointSupport.java:156) ~[spring-boot-actuator-3.2.8.jar:3.2.8]
+	at org.springframework.boot.actuate.health.HealthEndpointSupport.getContribution(HealthEndpointSupport.java:141) ~[spring-boot-actuator-3.2.8.jar:3.2.8]
+	at org.springframework.boot.actuate.health.HealthEndpointSupport.getHealth(HealthEndpointSupport.java:110) ~[spring-boot-actuator-3.2.8.jar:3.2.8]
+	at org.springframework.boot.actuate.health.HealthEndpointSupport.getHealth(HealthEndpointSupport.java:81) ~[spring-boot-actuator-3.2.8.jar:3.2.8]
+	at org.springframework.boot.actuate.health.HealthEndpoint.health(HealthEndpoint.java:76) ~[spring-boot-actuator-3.2.8.jar:3.2.8]
+	at org.springframework.boot.actuate.health.HealthEndpoint.health(HealthEndpoint.java:66) ~[spring-boot-actuator-3.2.8.jar:3.2.8]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:281) ~[spring-core-6.1.11.jar:6.1.11]
+	at org.springframework.boot.actuate.endpoint.invoke.reflect.ReflectiveOperationInvoker.invoke(ReflectiveOperationInvoker.java:74) ~[spring-boot-actuator-3.2.8.jar:3.2.8]
+	at org.springframework.boot.actuate.endpoint.annotation.AbstractDiscoveredOperation.invoke(AbstractDiscoveredOperation.java:60) ~[spring-boot-actuator-3.2.8.jar:3.2.8]
+	at org.springframework.boot.actuate.endpoint.jmx.EndpointMBean.invoke(EndpointMBean.java:124) ~[spring-boot-actuator-3.2.8.jar:3.2.8]
+	at org.springframework.boot.actuate.endpoint.jmx.EndpointMBean.invoke(EndpointMBean.java:97) ~[spring-boot-actuator-3.2.8.jar:3.2.8]
+	at java.management/com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:803) ~[na:na]
+	at java.management/com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:802) ~[na:na]
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1472) ~[na:na]
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1310) ~[na:na]
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1405) ~[na:na]
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:829) ~[na:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:360) ~[na:na]
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200) ~[na:na]
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197) ~[na:na]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:714) ~[na:na]
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196) ~[na:na]
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:598) ~[na:na]
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:844) ~[na:na]
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:721) ~[na:na]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400) ~[na:na]
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:720) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+
+2024-08-02T17:28:35.623+03:00  WARN 25234 --- [RMI TCP Connection(1)-192.168.1.16] o.s.b.a.health.HealthEndpointSupport     : Health contributor org.springframework.boot.actuate.mail.MailHealthIndicator (mail) took 121865ms to respond
+2024-08-02T17:35:17.642+03:00  INFO 26213 --- [main] c.e.SenderEmail.SenderEmailApplication   : Starting SenderEmailApplication using Java 22.0.2 with PID 26213 (/home/mostafahussien/IdeaProjects/SenderEmail/SenderEmail/target/classes started by mostafahussien in /home/mostafahussien/IdeaProjects/SenderEmail)
+2024-08-02T17:35:17.643+03:00  INFO 26213 --- [main] c.e.SenderEmail.SenderEmailApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-08-02T17:35:18.970+03:00  INFO 26213 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-02T17:35:18.980+03:00  INFO 26213 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-02T17:35:18.980+03:00  INFO 26213 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-02T17:35:19.018+03:00  INFO 26213 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-02T17:35:19.019+03:00  INFO 26213 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1331 ms
+2024-08-02T17:35:20.204+03:00  INFO 26213 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 4 endpoint(s) beneath base path '/actuator'
+2024-08-02T17:35:20.278+03:00  INFO 26213 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-08-02T17:35:20.293+03:00  INFO 26213 --- [main] c.e.SenderEmail.SenderEmailApplication   : Started SenderEmailApplication in 3.001 seconds (process running for 3.481)
+2024-08-02T17:35:20.652+03:00  INFO 26213 --- [RMI TCP Connection(2)-192.168.1.16] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-02T17:35:20.652+03:00  INFO 26213 --- [RMI TCP Connection(2)-192.168.1.16] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-02T17:35:20.653+03:00  INFO 26213 --- [RMI TCP Connection(2)-192.168.1.16] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-08-02T17:37:21.832+03:00  WARN 26213 --- [RMI TCP Connection(3)-192.168.1.16] o.s.b.a.health.HealthEndpointSupport     : Health contributor org.springframework.boot.actuate.mail.MailHealthIndicator (mail) took 121174ms to respond
