@@ -7,20 +7,21 @@ import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
 public class AfterAspects {
+    private static final Logger LOGGER = LoggerFactory.getLogger(AroundAspects.class);
+
 
     @After("execution (* com.example.SenderEmail.*.*.*(..))")
     public void after(JoinPoint jp) {
         String className = jp.getTarget().getClass().getSimpleName();
         String methodName = jp.getSignature().getName();
-
-        System.out.println("After class name   = " + className);
-        System.out.println("After method name  = " + methodName);
-
+        LOGGER.info(" After: From method : {} in class : {} ", methodName , className );
     }
 
 
@@ -28,26 +29,17 @@ public class AfterAspects {
     public void afterReturning(JoinPoint jp) {
         String className = jp.getTarget().getClass().getSimpleName();
         String methodName = jp.getSignature().getName();
-
-        System.out.println("AfterReturning class name  = " + className);
-        System.out.println("AfterReturning method name = " + methodName);
-
+        LOGGER.info(" After Returning: From method : {} in class : {} ", methodName , className );
     }
 
 
     @AfterThrowing(
-            pointcut = "execution (* com.example.SenderEmail.service.EmailService.sendEmail(..))",
-            throwing = "ex", argNames = "ex,jp")
-        public void afterThrowing(RuntimeException ex, JoinPoint jp) {
-
-
+            pointcut = "execution (* com.example.SenderEmail.service.*.*(..))",
+            throwing = "ex", argNames = "jp,ex")
+        public void afterThrowing(JoinPoint jp, RuntimeException ex) {
         String className =  ex.getClass().getSimpleName();
         String methodName = ex.getStackTrace()[0].getMethodName();
         String exceptionMessage = ex.getMessage();
-
-        System.out.println("AfterThrowing class name          = " + className);
-        System.out.println("AfterThrowing method name         = " + methodName);
-        System.out.println("AfterThrowing exception message   = " + exceptionMessage);
-
+        LOGGER.error(" Exception: From method : ' {} ' in class : ' {} '  , message exception : {}", methodName , className , exceptionMessage);
     }
 }
