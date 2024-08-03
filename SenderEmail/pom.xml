@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>SenderEmail</artifactId>
+    <artifactId>senderemail</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>SenderEmail</name>
+    <name>senderemail</name>
     <description>Demo project for Spring Boot to send email</description>
     <url/>
     <licenses>
