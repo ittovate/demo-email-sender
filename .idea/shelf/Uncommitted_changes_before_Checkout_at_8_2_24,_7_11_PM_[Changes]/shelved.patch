@@ -1,0 +1,139 @@
+Index: SenderEmail/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n    <parent>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-starter-parent</artifactId>\n        <version>3.2.8</version>\n        <relativePath/> <!-- lookup parent from repository -->\n    </parent>\n    <groupId>com.example</groupId>\n    <artifactId>SenderEmail</artifactId>\n    <version>0.0.1-SNAPSHOT</version>\n    <name>SenderEmail</name>\n    <description>Demo project for Spring Boot to send email</description>\n    <url/>\n    <licenses>\n        <license/>\n    </licenses>\n    <developers>\n        <developer/>\n    </developers>\n    <scm>\n        <connection/>\n        <developerConnection/>\n        <tag/>\n        <url/>\n    </scm>\n    <properties>\n        <java.version>22</java.version>\n    </properties>\n    <dependencies>\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-mail</artifactId>\n        </dependency>\n\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-test</artifactId>\n            <scope>test</scope>\n        </dependency>\n        <!--  ## Start Secret Enviroment ##  -->\n        <dependency>\n            <groupId>io.github.cdimascio</groupId>\n            <artifactId>dotenv-java</artifactId>\n            <version>2.2.0</version>\n        </dependency>\n        <!--  ## End Secret Enviroment ##  -->\n\n        <!--\t## Start  Aspect Oriented  Programming  ## -->\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-aop</artifactId>\n        </dependency>\n        <!--\t## End Aspect Oriented Programming   ## -->\n\n        <!--Start Actuator for monitoring -->\n\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-actuator</artifactId>\n        </dependency>\n\n<!--  Start \" dependency for Prometheus metrics integration \" -->\n        <dependency>\n            <groupId>io.micrometer</groupId>\n            <artifactId>micrometer-registry-prometheus</artifactId>\n        </dependency>\n        <!--  End \" dependency for Prometheus metrics integration \"-->\n        <!--\tEnd Actuator for monitoring  -->\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-web</artifactId>\n            <version>3.2.8</version>\n            <scope>compile</scope>\n        </dependency>\n        <dependency>\n            <groupId>org.springdoc</groupId>\n            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>\n            <version>2.5.0</version>\n        </dependency>\n        <dependency>\n            <groupId>io.github.cdimascio</groupId>\n            <artifactId>dotenv-java</artifactId>\n            <version>2.2.0</version>\n        </dependency>\n    </dependencies>\n\n    <build>\n        <plugins>\n            <plugin>\n                <groupId>org.springframework.boot</groupId>\n                <artifactId>spring-boot-maven-plugin</artifactId>\n            </plugin>\n        </plugins>\n    </build>\n\n</project>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/SenderEmail/pom.xml b/SenderEmail/pom.xml
+--- a/SenderEmail/pom.xml	
++++ b/SenderEmail/pom.xml	
+@@ -69,12 +69,31 @@
+         </dependency>
+         <!--  End " dependency for Prometheus metrics integration "-->
+         <!--	End Actuator for monitoring  -->
++
++
++<!--     Start  unit test-->
++        <dependency>
++            <groupId>org.junit.jupiter</groupId>
++            <artifactId>junit-jupiter</artifactId>
++            <version>5.8.2</version>
++            <scope>test</scope>
++        </dependency>
++        <dependency>
++            <groupId>org.springframework.boot</groupId>
++            <artifactId>spring-boot-starter-test</artifactId>
++            <scope>test</scope>
++        </dependency>
++
++
++
++        <!--   End  unit test-->
+         <dependency>
+             <groupId>org.springframework.boot</groupId>
+             <artifactId>spring-boot-starter-web</artifactId>
+             <version>3.2.8</version>
+             <scope>compile</scope>
+         </dependency>
++
+         <dependency>
+             <groupId>org.springdoc</groupId>
+             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+Index: SenderEmail/src/main/java/com/example/SenderEmail/SenderEmailApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.SenderEmail;\n\n\nimport io.github.cdimascio.dotenv.Dotenv;\nimport io.github.cdimascio.dotenv.DotenvEntry;\n\nimport io.swagger.v3.oas.annotations.OpenAPIDefinition;\nimport io.swagger.v3.oas.annotations.info.Contact;\nimport io.swagger.v3.oas.annotations.info.Info;\nimport io.swagger.v3.oas.annotations.servers.Server;\nimport org.springframework.boot.SpringApplication;\nimport org.springframework.boot.autoconfigure.SpringBootApplication;\n\n@SpringBootApplication\n@OpenAPIDefinition(\n        info = @Info(\n                title = \"Demo Email Sender\",\n                description = \"Very basic Demo\",\n                contact = @Contact(\n                        email = \"mostafadfrg@gmail.com\",\n                        name = \"Mostafa Hussein\"\n                ),\n                version = \"0.0.1\"\n        ),\n        servers = {\n                @Server(url = \"http://localhost:8080\", description = \"Development Server\")\n        }\n)\npublic class SenderEmailApplication {\n\n    public static void main(String[] args) {\n\n\n        // Add Environment Variables to the application context before start\n        Dotenv dotenv = Dotenv.load();\n        for (DotenvEntry entry : dotenv.entries()) {\n            System.setProperty(entry.getKey(), entry.getValue());\n        }\n\n        // Start the application\n\n        SpringApplication.run(SenderEmailApplication.class, args);\n    }\n\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/SenderEmail/src/main/java/com/example/SenderEmail/SenderEmailApplication.java b/SenderEmail/src/main/java/com/example/SenderEmail/SenderEmailApplication.java
+--- a/SenderEmail/src/main/java/com/example/SenderEmail/SenderEmailApplication.java	
++++ b/SenderEmail/src/main/java/com/example/SenderEmail/SenderEmailApplication.java	
+@@ -10,6 +10,7 @@
+ import io.swagger.v3.oas.annotations.servers.Server;
+ import org.springframework.boot.SpringApplication;
+ import org.springframework.boot.autoconfigure.SpringBootApplication;
++import org.springframework.core.metrics.jfr.FlightRecorderApplicationStartup;
+ 
+ @SpringBootApplication
+ @OpenAPIDefinition(
+@@ -40,6 +41,7 @@
+         // Start the application
+ 
+         SpringApplication.run(SenderEmailApplication.class, args);
++
+     }
+ 
+ 
+Index: SenderEmail/src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># Spring Boot Mail Configuration\nspring:\n  mail:\n    host: ${HOST}\n    port: ${PORT}\n    username: ${USERNAME}\n    password: ${PASSWORD}\n    properties:\n      mail:\n        smtp:\n          auth: true\n          starttls:\n            enable: true\n\n# Configuration for managing and monitoring Spring Boot application endpoints and metrics\n\n\n# 1. **Prometheus Metrics Endpoint:**\n#    - Exposes metrics for Prometheus, including CPU, thread usage, memory usage,\n#      HTTP request times, and the number of files open.\n#\n#\n# 2. **Logfile Endpoint:**\n#    - Provides access to the application's log file via an HTTP endpoint for easier management and review.\n#\n# 3. **Mappings Endpoint:**\n#    - Lists all @RequestMapping paths in the application, useful for debugging and understanding routing.\n#\n# 4. **Info Endpoint:**\n#    - Displays basic information about the application, such as version and build details.\n#\n# 5. **Logging:**\n#    - Specifies the file path where application logs\nmanagement:\n  endpoints:\n    web:\n      exposure:\n        include: prometheus,logfile,mappings,info\n  prometheus:\n    metrics:\n      export:\n        enabled: true\n\nlogging:\n  file:\n    name: logs/app.log\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/SenderEmail/src/main/resources/application.yml b/SenderEmail/src/main/resources/application.yml
+--- a/SenderEmail/src/main/resources/application.yml	
++++ b/SenderEmail/src/main/resources/application.yml	
+@@ -3,8 +3,8 @@
+   mail:
+     host: ${HOST}
+     port: ${PORT}
+-    username: ${USERNAME}
+-    password: ${PASSWORD}
++    username: mostafadfrg@gmail.com
++    password: qzbcgpgalkqvipki
+     properties:
+       mail:
+         smtp:
+Index: SenderEmail/src/test/java/com/example/SenderEmail/SenderEmailApplicationTests.java
+===================================================================
+diff --git a/SenderEmail/src/test/java/com/example/SenderEmail/SenderEmailApplicationTests.java b/SenderEmail/src/test/java/com/example/SenderEmail/SenderEmailApplicationTests.java
+deleted file mode 100644
+--- a/SenderEmail/src/test/java/com/example/SenderEmail/SenderEmailApplicationTests.java	
++++ /dev/null	
+@@ -1,13 +0,0 @@
+-package com.example.SenderEmail;
+-
+-import org.junit.jupiter.api.Test;
+-import org.springframework.boot.test.context.SpringBootTest;
+-
+-@SpringBootTest
+-class SenderEmailApplicationTests {
+-
+-	@Test
+-	void contextLoads() {
+-	}
+-
+-}
+Index: SenderEmail/src/main/java/com/example/SenderEmail/controller/EmailSenderController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.SenderEmail.controller;\n\n\nimport com.example.SenderEmail.model.Email;\nimport com.example.SenderEmail.service.EmailService;\nimport io.swagger.v3.oas.annotations.Operation;\nimport io.swagger.v3.oas.annotations.media.Content;\nimport io.swagger.v3.oas.annotations.media.Schema;\nimport io.swagger.v3.oas.annotations.responses.ApiResponse;\nimport io.swagger.v3.oas.annotations.responses.ApiResponses;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.web.bind.annotation.PostMapping;\nimport org.springframework.web.bind.annotation.RequestBody;\nimport org.springframework.web.bind.annotation.RequestMapping;\nimport org.springframework.web.bind.annotation.RestController;\n\n@RestController\n@RequestMapping( \"/email\")\npublic class EmailSenderController {\n\n    @Autowired\n    EmailService emailService;\n\n\n    @Operation(\n            method = \"POST\",\n            summary = \"Send Email\",\n            description = \"This endpoint allows you to send an email to one or more recipients. \" +\n                    \"The email must include a subject and a body. \" +\n                    \"The request body should contain the list of recipient email addresses in the to field, \" +\n                    \"which must include at least one email address, and the content of the email, \" +\n                    \"including the subject and body.\"\n    )\n    @ApiResponses(value = {\n            @ApiResponse(responseCode = \"200\", description = \"When The Email Is Sent Successfully\"),\n            @ApiResponse(responseCode = \"401\", description = \"When An Authorization Error Occurred\")\n    })\n\n    @PostMapping( \"/send-email\")\n    public void sendEmail(@RequestBody Email email){\n        emailService.sendEmail(email);\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/SenderEmail/src/main/java/com/example/SenderEmail/controller/EmailSenderController.java b/SenderEmail/src/main/java/com/example/SenderEmail/controller/EmailSenderController.java
+--- a/SenderEmail/src/main/java/com/example/SenderEmail/controller/EmailSenderController.java	
++++ b/SenderEmail/src/main/java/com/example/SenderEmail/controller/EmailSenderController.java	
+@@ -15,7 +15,7 @@
+ import org.springframework.web.bind.annotation.RestController;
+ 
+ @RestController
+-@RequestMapping( "/email")
++@RequestMapping("/email")
+ public class EmailSenderController {
+ 
+     @Autowired
+@@ -36,8 +36,8 @@
+             @ApiResponse(responseCode = "401", description = "When An Authorization Error Occurred")
+     })
+ 
+-    @PostMapping( "/send-email")
+-    public void sendEmail(@RequestBody Email email){
++    @PostMapping("/send-email")
++    public void sendEmail(@RequestBody Email email) {
+         emailService.sendEmail(email);
+     }
+ 
