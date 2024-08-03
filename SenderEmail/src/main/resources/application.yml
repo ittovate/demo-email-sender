@@ -1,3 +1,4 @@
+# Spring Boot Mail Configuration
 spring:
   mail:
     host: ${HOST}
@@ -10,5 +11,38 @@ spring:
           auth: true
           starttls:
             enable: true
+
+# Configuration for managing and monitoring Spring Boot application endpoints and metrics
+
+
+# 1. **Prometheus Metrics Endpoint:**
+#    - Exposes metrics for Prometheus, including CPU, thread usage, memory usage,
+#      HTTP request times, and the number of files open.
+#
+#
+# 2. **Logfile Endpoint:**
+#    - Provides access to the application's log file via an HTTP endpoint for easier management and review.
+#
+# 3. **Mappings Endpoint:**
+#    - Lists all @RequestMapping paths in the application, useful for debugging and understanding routing.
+#
+# 4. **Info Endpoint:**
+#    - Displays basic information about the application, such as version and build details.
+#
+# 5. **Logging:**
+#    - Specifies the file path where application logs
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus,logfile,mappings,info
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+
+logging:
+  file:
+    name: logs/app.log
 
 
