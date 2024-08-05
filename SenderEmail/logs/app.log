@@ -3424,3 +3424,48 @@ Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'HO
 	at org.springframework.boot.autoconfigure.condition.SpringBootCondition.matches(SpringBootCondition.java:47) ~[spring-boot-autoconfigure-3.2.8.jar:3.2.8]
 	... 98 common frames omitted
 
+2024-08-05T17:56:06.272+03:00  INFO 130348 --- [main] c.e.senderemail.SenderEmailApplication   : Starting SenderEmailApplication using Java 21.0.4 with PID 130348 (/home/mustafa/PhpstormProjects/Demos/SenderEmail/SenderEmail/target/classes started by mustafa in /home/mustafa/PhpstormProjects/Demos/SenderEmail/SenderEmail)
+2024-08-05T17:56:06.274+03:00  INFO 130348 --- [main] c.e.senderemail.SenderEmailApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-08-05T17:56:07.715+03:00  INFO 130348 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-05T17:56:07.730+03:00  INFO 130348 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-05T17:56:07.730+03:00  INFO 130348 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-05T17:56:07.774+03:00  INFO 130348 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-05T17:56:07.775+03:00  INFO 130348 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1433 ms
+2024-08-05T17:56:09.353+03:00  INFO 130348 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-08-05T17:56:09.369+03:00  INFO 130348 --- [main] c.e.senderemail.SenderEmailApplication   : Started SenderEmailApplication in 3.641 seconds (process running for 4.6)
+2024-08-05T17:56:21.003+03:00  INFO 130348 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-05T17:56:21.005+03:00  INFO 130348 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-05T17:56:21.013+03:00  INFO 130348 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2024-08-05T17:56:21.471+03:00  INFO 130348 --- [task-1] c.e.senderemail.aspect.LoggerAspect      :  Entering sendEmail method. Preparing to send email. 
+2024-08-05T17:56:21.471+03:00  INFO 130348 --- [task-1] c.e.senderemail.aspect.LoggerAspect      :  start check the data come from client is valued or not   
+2024-08-05T17:56:21.485+03:00 ERROR 130348 --- [task-1] c.e.senderemail.aspect.LoggerAspect      :  Exception from AOP : From method : ' sendEmail ' in class : ' com.example.senderemail.service.EmailService '  , message exception : 400 BAD_REQUEST " Error :One or more recipient email addresses are invalid."
+2024-08-05T17:56:47.548+03:00  INFO 130569 --- [main] c.e.senderemail.SenderEmailApplication   : Starting SenderEmailApplication using Java 21.0.4 with PID 130569 (/home/mustafa/PhpstormProjects/Demos/SenderEmail/SenderEmail/target/classes started by mustafa in /home/mustafa/PhpstormProjects/Demos/SenderEmail/SenderEmail)
+2024-08-05T17:56:47.553+03:00  INFO 130569 --- [main] c.e.senderemail.SenderEmailApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-08-05T17:56:50.114+03:00  INFO 130569 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-05T17:56:50.140+03:00  INFO 130569 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-05T17:56:50.142+03:00  INFO 130569 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-05T17:56:50.238+03:00  INFO 130569 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-05T17:56:50.240+03:00  INFO 130569 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2407 ms
+2024-08-05T17:56:52.239+03:00  INFO 130569 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-08-05T17:56:52.248+03:00  INFO 130569 --- [main] c.e.senderemail.SenderEmailApplication   : Started SenderEmailApplication in 5.66 seconds (process running for 6.662)
+2024-08-05T17:57:00.043+03:00  INFO 130569 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-05T17:57:00.057+03:00  INFO 130569 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-05T17:57:00.074+03:00  INFO 130569 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 16 ms
+2024-08-05T17:57:00.407+03:00  INFO 130569 --- [task-1] c.e.senderemail.aspect.LoggerAspect      :  Entering sendEmail method. Preparing to send email. 
+2024-08-05T17:57:00.410+03:00  INFO 130569 --- [task-1] c.e.senderemail.aspect.LoggerAspect      :  start check the data come from client is valued or not   
+2024-08-05T17:57:01.775+03:00 ERROR 130569 --- [task-1] c.e.senderemail.aspect.LoggerAspect      :  Exception from AOP : From method : ' sendEmail ' in class : ' com.example.senderemail.service.EmailService '  , message exception : Authentication failed
+2024-08-05T17:57:29.373+03:00  INFO 130720 --- [main] c.e.senderemail.SenderEmailApplication   : Starting SenderEmailApplication using Java 21.0.4 with PID 130720 (/home/mustafa/PhpstormProjects/Demos/SenderEmail/SenderEmail/target/classes started by mustafa in /home/mustafa/PhpstormProjects/Demos/SenderEmail/SenderEmail)
+2024-08-05T17:57:29.375+03:00  INFO 130720 --- [main] c.e.senderemail.SenderEmailApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-08-05T17:57:31.583+03:00  INFO 130720 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-05T17:57:31.599+03:00  INFO 130720 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-05T17:57:31.599+03:00  INFO 130720 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-05T17:57:31.657+03:00  INFO 130720 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-05T17:57:31.658+03:00  INFO 130720 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2121 ms
+2024-08-05T17:57:33.608+03:00  INFO 130720 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-08-05T17:57:33.617+03:00  INFO 130720 --- [main] c.e.senderemail.SenderEmailApplication   : Started SenderEmailApplication in 4.89 seconds (process running for 5.84)
+2024-08-05T17:57:47.728+03:00  INFO 130720 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-05T17:57:47.732+03:00  INFO 130720 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-05T17:57:47.744+03:00  INFO 130720 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2024-08-05T17:57:48.124+03:00  INFO 130720 --- [task-1] c.e.senderemail.aspect.LoggerAspect      :  Entering sendEmail method. Preparing to send email. 
+2024-08-05T17:57:48.125+03:00  INFO 130720 --- [task-1] c.e.senderemail.aspect.LoggerAspect      :  start check the data come from client is valued or not   
+2024-08-05T17:57:50.016+03:00  INFO 130720 --- [task-1] c.e.senderemail.aspect.LoggerAspect      :  sendEmail method finished. Total execution time: 1892 ms 

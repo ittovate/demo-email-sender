@@ -1,21 +1,27 @@
-package com.example.SenderEmail.utils;
+package com.example.senderemail.utils;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 
-public class RestResponse<T> extends  ResponseEntity<T>{
+public class RestResponse<T> extends ResponseEntity<T> {
     private T body;
     private String message;
 
     private HttpStatusCode statusCode;
 
+    /**
+     * @param statusCode
+     */
     public RestResponse(HttpStatusCode statusCode) {
         super(statusCode);
         this.statusCode = statusCode;
     }
 
+    /**
+     * @param body
+     * @param statusCode
+     */
     public RestResponse(T body, HttpStatusCode statusCode) {
         super(body, statusCode);
         this.body = body;
@@ -24,15 +30,29 @@ public class RestResponse<T> extends  ResponseEntity<T>{
 
     }
 
-
+    /**
+     * @param body
+     * @param headers
+     * @param rawStatus
+     */
     public RestResponse(T body, MultiValueMap headers, int rawStatus) {
         super(body, headers, rawStatus);
     }
 
+    /**
+     * @param body
+     * @param headers
+     * @param statusCode
+     */
     public RestResponse(T body, MultiValueMap headers, HttpStatusCode statusCode) {
         super(body, headers, statusCode);
     }
 
+    /**
+     * @param body
+     * @param message
+     * @param statusCode
+     */
     public RestResponse(T body, String message, HttpStatusCode statusCode) {
         super(body, statusCode);
         this.message = message;
@@ -69,8 +89,3 @@ public class RestResponse<T> extends  ResponseEntity<T>{
 
 
 }
-
-
-//public record RestResponse<T>(T body,
-//                              String message,
-//                              HttpStatusCode statusCode) {}
