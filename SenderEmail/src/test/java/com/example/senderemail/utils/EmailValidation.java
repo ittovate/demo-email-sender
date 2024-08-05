@@ -1,4 +1,4 @@
-package com.example.SenderEmail.utils;
+package com.example.senderemail.utils;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
