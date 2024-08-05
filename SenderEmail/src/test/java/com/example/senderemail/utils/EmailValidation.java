@@ -1,5 +1,6 @@
-package com.example.SenderEmail.utils;
+package com.example.senderemail.utils;
 
+import com.example.senderemail.utils.EmailValidations;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;

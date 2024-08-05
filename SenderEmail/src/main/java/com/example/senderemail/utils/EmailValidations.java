@@ -39,7 +39,7 @@ public class EmailValidations {
         }
         String emailRegex = "^((?!\\.)[\\w\\-_.]*[^.])(@\\w+)(\\.\\w+(\\.\\w+)?[^.\\W])$";
         Pattern pattern = Pattern.compile(emailRegex);
-        return !pattern.matcher(email.toLowerCase()).matches();
+        return pattern.matcher(email.toLowerCase()).matches();
     }
 
 
