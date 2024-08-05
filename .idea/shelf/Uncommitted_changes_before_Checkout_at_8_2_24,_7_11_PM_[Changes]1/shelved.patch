@@ -1,0 +1,20 @@
+Index: SenderEmail/src/main/java/com/example/SenderEmail/service/EmailService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.SenderEmail.service;\n\nimport com.example.SenderEmail.exception.ErrorResponse;\nimport com.example.SenderEmail.model.Email;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.boot.context.properties.ConfigurationProperties;\nimport org.springframework.http.HttpStatus;\nimport org.springframework.http.ResponseEntity;\nimport org.springframework.mail.SimpleMailMessage;\nimport org.springframework.mail.javamail.JavaMailSender;\nimport org.springframework.scheduling.annotation.Async;\nimport org.springframework.stereotype.Service;\nimport org.springframework.web.server.ResponseStatusException;\nimport org.slf4j.Logger;\nimport org.slf4j.LoggerFactory;\n\nimport java.util.regex.Pattern;\n\n@Service\n@ConfigurationProperties(prefix = \"spring.mail\")\npublic class EmailService {\n\n    private static final Logger logger = LoggerFactory.getLogger(EmailService.class);\n\n    private String username;\n    private final JavaMailSender mailSender;\n\n    @Autowired\n    public EmailService(JavaMailSender mailSender) {\n\n        this.mailSender = mailSender;\n    }\n\n    @Async\n    public ResponseEntity<ErrorResponse> sendEmail(Email email) {\n\n        isEmailDataValued( email ) ;\n\n        SimpleMailMessage message = new SimpleMailMessage();\n        message.setFrom(username);\n        message.setTo(email.getTo());\n        message.setSubject(email.getSubject());\n        message.setText(email.getBody());\n        mailSender.send(message);\n\n        logger.info(\"The system sent a message.\");\n\n        ErrorResponse successResponse = new ErrorResponse(HttpStatus.ACCEPTED.value(), \"The system sent a message.\"  );\n        return new ResponseEntity<>(successResponse, HttpStatus.ACCEPTED);\n\n    }\n\n    private void isEmailDataValued(Email email ){\n        if (email.getBody() == null || email.getBody().trim().isEmpty() ) {\n            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, \" Error : The body of email is empty\");\n        }\n        if (email.getSubject() == null || email.getSubject().trim().isEmpty()) {\n            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, \" Error : The subject of email is empty\");\n        }\n\n        if (! areValidEmails(email.getTo())) {\n            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, \" Error :One or more recipient email addresses are invalid.\");\n        }\n        logger.info(\"The email Data is valued .\");\n    }\n\n    private boolean areValidEmails(String[] emails) {\n        if (emails == null) {\n            return false;\n        }\n        String emailRegex = \"^[A-Za-z0-9+_.-]+@(.+)$\";\n        Pattern pattern = Pattern.compile(emailRegex);\n        for (String email : emails) {\n            if (!pattern.matcher(email).matches()) {\n                return false;\n            }\n        }\n        return true;\n    }\n\n    public String getUsername() {\n        return username;\n    }\n\n    public void setUsername(String username) {\n        this.username = username;\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/SenderEmail/src/main/java/com/example/SenderEmail/service/EmailService.java b/SenderEmail/src/main/java/com/example/SenderEmail/service/EmailService.java
+--- a/SenderEmail/src/main/java/com/example/SenderEmail/service/EmailService.java	
++++ b/SenderEmail/src/main/java/com/example/SenderEmail/service/EmailService.java	
+@@ -86,4 +86,9 @@
+         this.username = username;
+     }
+ 
++
++    public int add( int x , int y ){
++        return x+ y ;
++    }
++
+ }

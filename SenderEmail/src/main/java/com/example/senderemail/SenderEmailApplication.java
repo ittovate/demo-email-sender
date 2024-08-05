@@ -1,17 +1,21 @@
-package com.example.SenderEmail;
+package com.example.senderemail;
 
+
+import io.github.cdimascio.dotenv.Dotenv;
+import io.github.cdimascio.dotenv.DotenvEntry;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-import io.swagger.v3.oas.annotations.extensions.Extension;
-import io.swagger.v3.oas.annotations.extensions.ExtensionProperty;
 import io.swagger.v3.oas.annotations.info.Contact;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.servers.Server;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableAsync;
 
+@SuppressWarnings("checkstyle:HideUtilityClassConstructor")
 @SpringBootApplication
 @OpenAPIDefinition(
-        info = @Info(title = "Demo Email Sender",
+        info = @Info(
+                title = "Demo Email Sender",
                 description = "Very basic Demo",
                 contact = @Contact(
                         email = "mostafadfrg@gmail.com",
@@ -21,17 +25,24 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
         ),
         servers = {
                 @Server(url = "http://localhost:8080", description = "Development Server")
-        },
-        extensions = {
-                @Extension(name = "scanAllResources",
-                        properties = @ExtensionProperty(name = "scanAllResources", value = "false")
-                )
+        }
+)
+@EnableAsync
+public class SenderEmailApplication {
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+
+
+        // Add Environment Variables to the application context before start
+        Dotenv dotenv = Dotenv.load();
+        for (DotenvEntry entry : dotenv.entries()) {
+            System.setProperty(entry.getKey(), entry.getValue());
         }
 
-)
-public class SenderEmailApplication {
+        // Start the application
 
-    public static void main(String[] args) {
         SpringApplication.run(SenderEmailApplication.class, args);
     }
 
