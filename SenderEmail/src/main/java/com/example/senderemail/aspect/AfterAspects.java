@@ -16,7 +16,7 @@ public class AfterAspects {
     private static final Logger LOGGER = LoggerFactory.getLogger(AroundAspects.class);
 
 
-    @After("execution (* com.example.SenderEmail.*.*.*(..))")
+    @After("execution (* com.example.senderemail.*.*.*(..))")
     public void after(JoinPoint jp) {
         String className = jp.getTarget().getClass().getSimpleName();
         String methodName = jp.getSignature().getName();
@@ -24,7 +24,7 @@ public class AfterAspects {
     }
 
 
-    @AfterReturning("execution (* com.example.SenderEmail.*.*.*(..))")
+    @AfterReturning("execution (* com.example.senderemail.*.*.*(..))")
     public void afterReturning(JoinPoint jp) {
         String className = jp.getTarget().getClass().getSimpleName();
         String methodName = jp.getSignature().getName();
@@ -33,9 +33,20 @@ public class AfterAspects {
 
 
     @AfterThrowing(
-            pointcut = "execution (* com.example.SenderEmail.service.*.*(..))",
+            pointcut = "execution (* com.example.senderemail.service.*.*(..))",
             throwing = "ex", argNames = "jp,ex")
         public void afterThrowing(JoinPoint jp, RuntimeException ex) {
+        String className =  ex.getClass().getSimpleName();
+        String methodName = ex.getStackTrace()[0].getMethodName();
+        String exceptionMessage = ex.getMessage();
+        LOGGER.error(" Exception: From method : ' {} ' in class : ' {} '  , message exception : {}", methodName , className , exceptionMessage);
+    }
+
+
+    @AfterThrowing(
+            pointcut = "execution (* com.example.senderemail.controller.*.*(..))",
+            throwing = "ex", argNames = "jp,ex")
+    public void afterControllerThrowing(JoinPoint jp, RuntimeException ex) {
         String className =  ex.getClass().getSimpleName();
         String methodName = ex.getStackTrace()[0].getMethodName();
         String exceptionMessage = ex.getMessage();

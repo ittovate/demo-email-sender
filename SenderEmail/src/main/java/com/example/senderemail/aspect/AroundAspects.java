@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AroundAspects {
     private static final Logger LOGGER = LoggerFactory.getLogger(AroundAspects.class);
-    @Around("execution(* com.example.SenderEmail.service.*.*(..))")
+    @Around("execution(* com.example.senderemail.service.*.*(..))")
     public Object doBasicProfiling(ProceedingJoinPoint pjp) throws Throwable {
         long startTime = System.nanoTime();
 
@@ -31,12 +31,12 @@ public class AroundAspects {
     }
 
 
-//    @Before("execution(* com.example.SenderEmail.controller.*.*(..))")
+//    @Before("execution(* com.example.senderemail.controller.*.*(..))")
 //    public void before() throws Throwable {
 //        System.out.println("came here before");
 //    }
 
-//    @Before("execution(* com.example.SenderEmail.*.*.*(..))")
+//    @Before("execution(* com.example.senderemail.*.*.*(..))")
 //    public void beforeInService() throws Throwable {
 //        System.out.println("came here before");
 //    }
