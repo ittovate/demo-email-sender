@@ -1,6 +1,7 @@
 package com.example.senderemail.controller;
 
 
+import com.example.senderemail.exception.EmailValidationException;
 import com.example.senderemail.model.Email;
 import com.example.senderemail.service.EmailService;
 import com.example.senderemail.utils.RestResponse;
@@ -9,10 +10,14 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 
 @RestController
@@ -49,11 +54,18 @@ public class EmailSenderController {
             @ApiResponse(responseCode = "401", description = "When An Authorization Error Occurred")
     })
 
+    @Async
     @PostMapping("/send-email")
-    public RestResponse<Email> sendEmail(@RequestBody Email email) {
-        emailService.sendEmail(email);
+    public CompletableFuture<RestResponse<Email>> sendEmail(@RequestBody Email email) {
 
-        return new RestResponse<>(email, HttpStatus.ACCEPTED);
+        try {
+            emailService.sendEmail(email).get();
+        } catch (EmailValidationException ex) {
+            throw ex;
+        } catch (ExecutionException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return CompletableFuture.completedFuture(new RestResponse<>(email, HttpStatus.ACCEPTED));
     }
 
 }

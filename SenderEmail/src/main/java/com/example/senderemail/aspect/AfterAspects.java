@@ -43,13 +43,5 @@ public class AfterAspects {
     }
 
 
-    @AfterThrowing(
-            pointcut = "execution (* com.example.senderemail.controller.*.*(..))",
-            throwing = "ex", argNames = "jp,ex")
-    public void afterControllerThrowing(JoinPoint jp, RuntimeException ex) {
-        String className =  ex.getClass().getSimpleName();
-        String methodName = ex.getStackTrace()[0].getMethodName();
-        String exceptionMessage = ex.getMessage();
-        LOGGER.error(" Exception: From method : ' {} ' in class : ' {} '  , message exception : {}", methodName , className , exceptionMessage);
-    }
+
 }

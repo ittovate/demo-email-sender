@@ -1,20 +1,16 @@
 package com.example.senderemail.service;
 
-import com.example.senderemail.exception.ErrorResponse;
+import com.example.senderemail.exception.EmailValidationException;
 import com.example.senderemail.model.Email;
 import com.example.senderemail.utils.EmailValidations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Future;
 
 @Service
 @ConfigurationProperties(prefix = "spring.mail")
@@ -40,42 +36,27 @@ public class EmailService {
      * @return Future<ResponseEntity < ErrorResponse>>
      */
     @Async
-    public Future<ResponseEntity<ErrorResponse>> sendEmail(Email email) {
+    public CompletableFuture<Void> sendEmail(Email email) {
 
-        isEmailDataValued(email);
-
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(username);
-        message.setTo(email.getTo());
-        message.setSubject(email.getSubject());
-        message.setText(email.getBody());
-        mailSender.send(message);
+        try {
+            emailValidator.isEmailDataValid(email);
 
 
-        ErrorResponse successResponse = new ErrorResponse(HttpStatus.ACCEPTED.value(), "The system sent a message.");
-        return CompletableFuture.completedFuture(new ResponseEntity<>(successResponse, HttpStatus.ACCEPTED));
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setFrom(username);
+            message.setTo(email.getTo());
+            message.setSubject(email.getSubject());
+            message.setText(email.getBody());
+            mailSender.send(message);
+        } catch (EmailValidationException ex) {
+            throw ex;
+        }
+        catch (Throwable ex) {
+            throw ex;
+        }
 
+        return CompletableFuture.completedFuture(null);
     }
-
-
-    /**
-     * @param email email entity to be validated
-     */
-    public void isEmailDataValued(Email email) {
-        if (email.getBody() == null || email.getBody().trim().isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, " Error : The body of email is empty");
-        }
-        if (email.getSubject() == null || email.getSubject().trim().isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, " Error : The subject of email is empty");
-        }
-
-        if (!emailValidator.areValidEmails(email.getTo())) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-                    " Error :One or more recipient email addresses are invalid.");
-        }
-
-    }
-
 
     public String getUsername() {
         return username;

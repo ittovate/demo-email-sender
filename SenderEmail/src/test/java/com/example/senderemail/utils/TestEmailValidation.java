@@ -1,16 +1,20 @@
 package com.example.senderemail.utils;
 
+import com.example.senderemail.model.Email;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 @SpringBootTest(classes = EmailValidations.class)
-public class EmailValidation {
+class TestEmailValidation {
 
     private final EmailValidations validations = new EmailValidations();
 
@@ -101,5 +105,25 @@ public class EmailValidation {
                 "admin@mailserver1",
         }));
     }
-}
 
+
+    private static Stream<Arguments> emailProvider() {
+        return Stream.of(
+                Arguments.of(new Email("test body", "test subject", new String[]{"test@example.com"})),
+                Arguments.of(new Email("test body", "test subject", new String[]{"test@example.com",})),
+                Arguments.of(new Email("test body", "test subject", new String[]{"x@example.com",})),
+                Arguments.of(new Email("test body", "test subject", new String[]{"example@s.example",})),
+                Arguments.of(new Email("test body", "test subject", new String[]{"john.doe\"@example.com",})),
+                Arguments.of(new Email("test body", "test subject", new String[]{"firstname.lastname@example.com",})),
+                Arguments.of(new Email("test body", "test subject", new String[]{"email@subdomain.example.com",})),
+                Arguments.of(new Email("test body", "test subject", new String[]{"user@domain.com",}))
+        );
+    }
+    @ParameterizedTest
+    @MethodSource("emailProvider")
+    void validEmailObjects(Email email) {
+        assertDoesNotThrow(() -> validations.isEmailDataValid(email));
+    }
+
+
+}
