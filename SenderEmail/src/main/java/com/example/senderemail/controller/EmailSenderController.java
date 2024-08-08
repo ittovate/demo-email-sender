@@ -10,11 +10,13 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Mono;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -50,22 +52,19 @@ public class EmailSenderController {
                     + "including the subject and body."
     )
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "When The Email Is Sent Successfully"),
-            @ApiResponse(responseCode = "401", description = "When An Authorization Error Occurred")
+            @ApiResponse(responseCode = "201", description = "When The Email Is Sent Successfully"),
+            @ApiResponse(responseCode = "400", description = "When An Authorization Error Occurred")
     })
 
-    @Async
-    @PostMapping("/send-email")
-    public CompletableFuture<RestResponse<Email>> sendEmail(@RequestBody Email email) {
 
-        try {
-            emailService.sendEmail(email).get();
-        } catch (EmailValidationException ex) {
-            throw ex;
-        } catch (ExecutionException | InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        return CompletableFuture.completedFuture(new RestResponse<>(email, HttpStatus.ACCEPTED));
+    @PostMapping("/send-email")
+    public ResponseEntity<RestResponse<String>> sendEmail(@RequestBody Email email) {
+
+            emailService.validateEmailAndSend(email);
+
+        RestResponse<String> response = new RestResponse<>(null, "Email has been sent successfully ", HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(response, HttpStatus.ACCEPTED );
     }
+
 
 }
