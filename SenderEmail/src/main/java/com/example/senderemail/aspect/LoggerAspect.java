@@ -37,7 +37,7 @@ public class LoggerAspect {
     public void logAfterThrowing(JoinPoint joinPoint, Throwable ex) {
         String methodName = joinPoint.getSignature().getName();
         String className = joinPoint.getTarget().getClass().getName();
-        LOGGER.error(" Exception from AOP : From method : ' {} ' in class : ' {} '  , message exception : {}",
+        LOGGER.error("Exception: From method : From method : ' {} ' in class : ' {} '  , message exception : {}",
                 methodName, className, ex.getMessage());
     }
 
@@ -46,19 +46,18 @@ public class LoggerAspect {
      * @param joinPoint
      * @throws Throwable
      */
-    @Around("execution( * com.example.senderemail.service.EmailService.sendEmail(..) )")
+         // validateEmailAndSend
+    //sendEmail
+    @Around("execution( * com.example.senderemail.service.EmailService.validateEmailAndSend(..) )")
     public void loggerAround(ProceedingJoinPoint joinPoint) throws Throwable {
+        String className = joinPoint.getTarget().getClass().getSimpleName();
+        String methodName = joinPoint.getSignature().getName();
 
-        long start = System.currentTimeMillis();
-
-        LOGGER.info(" Entering sendEmail method. Preparing to send email. ");
-        LOGGER.info(" start check the data come from client is valued or not   ");
+        LOGGER.info("Beginning to check if the data is valid in method: {} of class: {}." , methodName , className );
 
         joinPoint.proceed();
 
-        long executionTime = System.currentTimeMillis() - start;
-
-        LOGGER.info(" sendEmail method finished. Total execution time: {} ms ", executionTime);
+      LOGGER.info("Data validation completed successfully. The email data is valid and will now be sent asynchronously");
 
     }
 

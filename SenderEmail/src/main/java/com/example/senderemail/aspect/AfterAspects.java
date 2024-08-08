@@ -1,27 +1,27 @@
 package com.example.senderemail.aspect;
 
 
+import com.example.senderemail.model.Email;
+import com.example.senderemail.utils.EmailValidations;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
 public class AfterAspects {
-    private static final Logger LOGGER = LoggerFactory.getLogger(AroundAspects.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AfterAspects.class);
 
+    @Autowired
+    private final EmailValidations emailValidator;
 
-    @After("execution (* com.example.senderemail.*.*.*(..))")
-    public void after(JoinPoint jp) {
-        String className = jp.getTarget().getClass().getSimpleName();
-        String methodName = jp.getSignature().getName();
-        LOGGER.info(" After: From method : {} in class : {} ", methodName , className );
+    public AfterAspects(EmailValidations emailValidator) {
+        this.emailValidator = emailValidator;
     }
+
 
 
     @AfterReturning("execution (* com.example.senderemail.*.*.*(..))")
@@ -32,15 +32,7 @@ public class AfterAspects {
     }
 
 
-    @AfterThrowing(
-            pointcut = "execution (* com.example.senderemail.service.*.*(..))",
-            throwing = "ex", argNames = "jp,ex")
-        public void afterThrowing(JoinPoint jp, RuntimeException ex) {
-        String className =  ex.getClass().getSimpleName();
-        String methodName = ex.getStackTrace()[0].getMethodName();
-        String exceptionMessage = ex.getMessage();
-        LOGGER.error(" Exception: From method : ' {} ' in class : ' {} '  , message exception : {}", methodName , className , exceptionMessage);
-    }
+
 
 
 
