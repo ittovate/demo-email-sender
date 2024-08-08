@@ -3,14 +3,19 @@ package com.example.senderemail.service;
 import com.example.senderemail.exception.EmailValidationException;
 import com.example.senderemail.model.Email;
 import com.example.senderemail.utils.EmailValidations;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 @Service
 @ConfigurationProperties(prefix = "spring.mail")
@@ -30,33 +35,40 @@ public class EmailService {
         this.emailValidator = emailValidator;
 
     }
+    /**
+     * Validates the provided email data and sends the email if validation passes.
+     *
+     * This method first validates the email data using the emailValidator and then
+     * sends the email if the data is valid. If the email data is invalid, an
+     * EmailValidationException is thrown.
+     *
+     * @param email the email entity containing the data to be validated and sent
+     * @throws EmailValidationException if the email data is invalid
+     */
+    public void validateEmailAndSend( Email email){
+
+        emailValidator.isEmailDataValid( email );
+        sendEmail(email);
+    }
 
     /**
      * @param email represents email entity to be sent
      * @return Future<ResponseEntity < ErrorResponse>>
      */
+
     @Async
-    public CompletableFuture<Void> sendEmail(Email email) {
-
-        try {
-            emailValidator.isEmailDataValid(email);
-
+    public void sendEmail(Email email) {
 
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom(username);
             message.setTo(email.getTo());
             message.setSubject(email.getSubject());
             message.setText(email.getBody());
-            mailSender.send(message);
-        } catch (EmailValidationException ex) {
-            throw ex;
-        }
-        catch (Throwable ex) {
-            throw ex;
-        }
+       //    mailSender.send(message);
 
-        return CompletableFuture.completedFuture(null);
     }
+
+
 
     public String getUsername() {
         return username;

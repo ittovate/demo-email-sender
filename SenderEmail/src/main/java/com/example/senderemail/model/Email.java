@@ -1,8 +1,10 @@
 package com.example.senderemail.model;
 
+import jakarta.validation.constraints.NotNull;
+
 public class Email {
 
-    private final String body;
+    private  final String body ;
 
     private final String subject;
 
