@@ -53,12 +53,12 @@ public class EmailSenderController {
 
 
     @PostMapping("/send-email")
-    public RestResponse<Email> sendEmail(@Valid @RequestBody Email email) {
+    public ResponseEntity<RestResponse<Email>> sendEmail(@Valid @RequestBody Email email) {
 
         emailService.sendEmail(email);
-        return new RestResponse<>(email, "email is sent successfully", HttpStatus.ACCEPTED);
-//        RestResponse<Email> response = new RestResponse<>(email, "Email has been sent successfully ", HttpStatus.ACCEPTED);
-//        return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
+
+        RestResponse<Email> response = new RestResponse<>(email, "Email has been sent successfully ", HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 
 }

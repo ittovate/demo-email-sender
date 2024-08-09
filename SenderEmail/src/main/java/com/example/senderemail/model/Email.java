@@ -23,7 +23,10 @@ public class Email {
 
     @NotNull(message = "To Array Cannot Be Null")
     @NotEmpty(message = "There Must Be At Least One Email Recipient")
-    @ValidStringArray(regex = "^((?!\\.)[\\w\\-_.]*[^.])(@\\w+)(\\.\\w+(\\.\\w+)?[^.\\W])$", groups = {Default.class})
+    @ValidStringArray(
+            regex = "^((?!\\.)[\\w\\-_.]*[^.])(@\\w+)(\\.\\w+(\\.\\w+)?[^.\\W])$",
+            message = "",
+            groups = {Default.class})
     private final String[] to;
 
 
