@@ -36,26 +36,15 @@ public class EmailService {
      * @return Future<ResponseEntity < ErrorResponse>>
      */
     @Async
-    public CompletableFuture<Void> sendEmail(Email email) {
+    public void sendEmail(Email email) {
+        emailValidator.isEmailDataValid(email);
 
-        try {
-            emailValidator.isEmailDataValid(email);
-
-
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom(username);
-            message.setTo(email.getTo());
-            message.setSubject(email.getSubject());
-            message.setText(email.getBody());
-            mailSender.send(message);
-        } catch (EmailValidationException ex) {
-            throw ex;
-        }
-        catch (Throwable ex) {
-            throw ex;
-        }
-
-        return CompletableFuture.completedFuture(null);
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom(username);
+        message.setTo(email.getTo());
+        message.setSubject(email.getSubject());
+        message.setText(email.getBody());
+        mailSender.send(message);
     }
 
     public String getUsername() {
