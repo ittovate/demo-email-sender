@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-
-import java.util.concurrent.CompletableFuture;
 
 @Service
 @ConfigurationProperties(prefix = "spring.mail")
@@ -30,21 +27,32 @@ public class EmailService {
         this.emailValidator = emailValidator;
 
     }
+    /**
+     * Validates the provided email data and sends the email if validation passes.
+     *
+     * This method first validates the email data using the emailValidator and then
+     * sends the email if the data is valid. If the email data is invalid, an
+     * EmailValidationException is thrown.
+     *
+     * @param email the email entity containing the data to be validated and sent
+     * @throws EmailValidationException if the email data is invalid
+     */
+    public void validateEmailAndSend( Email email){
+        emailValidator.isEmailDataValid( email );
+        sendEmail(email);
+    }
 
     /**
      * @param email represents email entity to be sent
      * @return Future<ResponseEntity < ErrorResponse>>
      */
-    @Async
     public void sendEmail(Email email) {
-        emailValidator.isEmailDataValid(email);
-
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(username);
         message.setTo(email.getTo());
         message.setSubject(email.getSubject());
         message.setText(email.getBody());
-        mailSender.send(message);
+//        mailSender.send(message);
     }
 
     public String getUsername() {
