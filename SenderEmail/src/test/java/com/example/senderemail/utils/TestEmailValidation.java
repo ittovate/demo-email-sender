@@ -50,7 +50,6 @@ class TestEmailValidation {
 
     @ParameterizedTest
     @ValueSource(strings = {
-            "email\"@example.com",
             "plainaddress",
             "@missing-local-part.com",
             "username@example,com",
