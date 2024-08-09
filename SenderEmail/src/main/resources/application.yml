@@ -3,8 +3,8 @@ spring:
   mail:
     host: ${HOST}
     port: ${PORT}
-    username: mostafadfrg@gmail.com
-    password: qzbcgpgalkqvipki
+    username: ${USERNAME}
+    password: ${PASSWORD}
     properties:
       mail:
         smtp:

@@ -12,21 +12,13 @@ import java.util.List;
 public class Email {
 
 
-    @NotNull(message = "Email Body Cannot Be Null")
-    @NotBlank(message = "Email Body Cannot Be Empty")
+
     private final String body;
 
-    // TODO: put that text in a constants file
-    @NotNull(message = "Subject Body Cannot Be Null")
-    @NotBlank(message = "Subject Body Cannot Be Empty")
+
     private final String subject;
 
-    @NotNull(message = "To Array Cannot Be Null")
-    @NotEmpty(message = "There Must Be At Least One Email Recipient")
-    @ValidStringArray(
-            regex = "^((?!\\.)[\\w\\-_.]*[^.])(@\\w+)(\\.\\w+(\\.\\w+)?[^.\\W])$",
-            message = "",
-            groups = {Default.class})
+
     private final String[] to;
 
 
