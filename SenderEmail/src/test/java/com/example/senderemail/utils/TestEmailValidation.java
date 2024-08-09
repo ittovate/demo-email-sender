@@ -1,5 +1,6 @@
 package com.example.senderemail.utils;
 
+import com.example.senderemail.exception.EmailValidationException;
 import com.example.senderemail.model.Email;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -118,10 +119,32 @@ class TestEmailValidation {
                 Arguments.of(new Email("test body", "test subject", new String[]{"user@domain.com",}))
         );
     }
+
     @ParameterizedTest
     @MethodSource("emailProvider")
     void validEmailObjects(Email email) {
         assertDoesNotThrow(() -> validations.isEmailDataValid(email));
+    }
+
+
+    private static Stream<Arguments> emailProviderFail() {
+        return Stream.of(
+                Arguments.of(new Email(null, "test subject", new String[]{"test@example.com"}), "Error: The body of the email is empty."),
+                Arguments.of(new Email("", "test subject", new String[]{"test@example.com"}), "Error: The body of the email is empty."),
+                Arguments.of(new Email("test body", null, new String[]{"test@example.com",}), "Error: The subject of the email is empty."),
+                Arguments.of(new Email("test body", "", new String[]{"test@example.com",}), "Error: The subject of the email is empty."),
+                Arguments.of(new Email("test body", "test subject", null), "Error: One or more recipient email addresses are invalid."),
+                Arguments.of(new Email("test body", "test subject", new String[]{}), "Error: One or more recipient email addresses are invalid."),
+                Arguments.of(new Email("test body", "test subject", new String[]{"invalidEmailAddress",}), "Error: One or more recipient email addresses are invalid.")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("emailProviderFail")
+    void invalidEmailObjects(Email email, String expectedMessage) {
+        Exception exception = assertThrows(EmailValidationException.class, () -> validations.isEmailDataValid(email));
+        assertTrue(exception.getMessage().contains(expectedMessage));
+
     }
 
 

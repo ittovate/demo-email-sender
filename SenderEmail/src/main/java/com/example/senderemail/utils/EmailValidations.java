@@ -16,7 +16,7 @@ public class EmailValidations {
      * @return whether all the emails are valid or not.
      */
     public boolean areValidEmails(String[] emails) {
-        if (emails == null) {
+        if (emails == null || emails.length == 0) {
             return false;
         }
 
@@ -47,7 +47,7 @@ public class EmailValidations {
 
     /**
      * Validates the given email entity's data.
-     *
+     * <p>
      * Checks if the body and subject of the email are not null or empty and if
      * the recipient email addresses are valid. If any validation fails, an
      * EmailValidationException is thrown.
@@ -60,11 +60,11 @@ public class EmailValidations {
             throw new EmailValidationException("Error: The body of the email is empty.");
         }
         if (email.getSubject() == null || email.getSubject().trim().isEmpty()) {
-            throw new EmailValidationException("Error: The subject of the email is empty." );
+            throw new EmailValidationException("Error: The subject of the email is empty.");
         }
         if (!this.areValidEmails(email.getTo())) {
             throw new EmailValidationException("Error: One or more recipient email addresses are invalid.");
         }
-        }
+    }
 
 }
