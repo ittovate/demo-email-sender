@@ -7,17 +7,25 @@
 - ***Multi-Client Compatibility :*** Supports Gmail, Outlook, and other email services.
 
 ## Technologies Used
+
+#### languages
  - **java 21 :** The programming language used for developing the application.
- - **spring 3.2.8 :** The framework used to build and run the application.
- -  **actuator :** using to monitoring application . 
- - **aspect :** Designed to handle multiple parts of an application, such as logging . 
- - **Exeption handler :** Provides custom error messages for different types of exceptions in one place.
- - **SMTP Server :** Sends emails using Google’s SMTP server with your personal email.
- - **swagger :** use to implement documentation to your project
- - **environment security :** use to secret the sensitive information 
- - **Maven :** The build automation tool used for managing project dependencies and building the application.
- - **yml File :** the project use YAML file to handle Configuration
+#### framework
+ - ** Spring Version :** `Spring 3.2.8` The framework used to build and run the application.
  - **Spring Web :** Used to implement stateless URLs in web applications.
+ - **aspect :** Designed to handle multiple parts of an application, such as logging .
+ - **actuator :** using to monitoring application .
+ - **swagger :** use to implement documentation to your project
+   
+  #### tools
+  - **Maven :** The build automation tool used for managing project dependencies and building the application.
+ - **SMTP Server :** Sends emails using Google’s SMTP server with your personal email.
+   
+ #### tech  
+ - **Exeption handler :** Provides custom error messages for different types of exceptions in one place.
+ - ** `.env` secret management :** use to secret the sensitive information 
+ - **yml File :** the project use YAML file to handle Configuration
+
 
 
 ## Prerequisites
@@ -40,9 +48,9 @@ To run the project, you need to configure an email SMTP server. For this demo, w
    - Enable "2-Step Verification."
 
 This will allow you to create an App Password for your SMTP configuration.
-3- after log in with google you tell you  "name application "  
-4- after write name  application ( any name )and click `create `
-5- now you must see you APP Passwords 
+##### 3- after log in with google you tell you  "name application "  
+##### 4- after write name  application ( any name )and click `create `
+##### 5- now you must see you APP Passwords 
 ![image](https://github.com/user-attachments/assets/b1ea14df-fb8f-4970-a8e2-a3c9aaf7e7c3)
 
 ### 2- Create a `.env` File for Sensitive Security Information
