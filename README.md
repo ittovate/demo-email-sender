@@ -142,7 +142,9 @@ The server will return a `400 Bad Request` error with an appropriate exception m
 }
 ```
 
-### secound test ( with body empty  )
+### secound test 
+##### with body empty  
+
 ```yml
 {
   "body": "    ",
@@ -152,7 +154,7 @@ The server will return a `400 Bad Request` error with an appropriate exception m
   ]
 }
 ```
-#### Request
+#### Response
 ```yml
 {
   "body": null,
@@ -161,7 +163,8 @@ The server will return a `400 Bad Request` error with an appropriate exception m
 }
 ```
 
-### thired test ( with subject empty )
+### thired test 
+#### with subject empty 
 ```yml
 {
   "body": " this is a body    ",
@@ -171,7 +174,7 @@ The server will return a `400 Bad Request` error with an appropriate exception m
   ]
 }
 ```
-#### Request
+#### Response
 ```yml
 {
   "body": null,
@@ -180,7 +183,8 @@ The server will return a `400 Bad Request` error with an appropriate exception m
 }
 ```
 
-### fourth test ( with incorrect email structure ) 
+### fourth test 
+##### with incorrect email structure 
 ```yml
 {
   "body": " this is a body    ",
@@ -191,7 +195,7 @@ The server will return a `400 Bad Request` error with an appropriate exception m
 }
 ```
 
-#### Request
+#### Response
 ```yml
 {
   "body": null,
