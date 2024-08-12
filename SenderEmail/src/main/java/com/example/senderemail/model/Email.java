@@ -1,7 +1,9 @@
 package com.example.senderemail.model;
 
 
+
 public class Email {
+
 
 
     private final String body;
