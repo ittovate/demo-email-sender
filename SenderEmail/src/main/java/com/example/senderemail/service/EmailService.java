@@ -52,7 +52,7 @@ public class EmailService {
         message.setTo(email.getTo());
         message.setSubject(email.getSubject());
         message.setText(email.getBody());
-//        mailSender.send(message);
+        mailSender.send(message);
     }
 
     public String getUsername() {
