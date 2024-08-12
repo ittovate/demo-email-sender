@@ -17,34 +17,6 @@ import java.util.Map;
 public class GlobalExceptionHandler {
 
 
-    /**
-     * handle response exception.
-     *
-     * @param ex
-     * @return ResponseEntity<ErrorResponse>
-     */
-    @ExceptionHandler(ResponseStatusException.class)
-    public RestResponse<String> handleResponseStatusException(ResponseStatusException ex) {
-        HttpStatus statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-        String message = ex.getMessage();
-
-        return new RestResponse<>(message, statusCode);
-    }
-
-    @ExceptionHandler({MethodArgumentNotValidException.class})
-    @ResponseBody
-    public RestResponse<Map<String, String>> handleValidationExceptions(
-            MethodArgumentNotValidException ex) {
-        Map<String, String> errors = new HashMap<>();
-
-        ex.getBindingResult().getAllErrors().forEach(error -> {
-            String fieldName = ((FieldError) error).getField();
-            String errorMessage = error.getDefaultMessage();
-            errors.put(fieldName, errorMessage);
-        });
-        return new RestResponse<>(errors, "Message: Email data are invalid", HttpStatus.BAD_REQUEST);
-    }
-
 
     /**
      * handle response exception.
