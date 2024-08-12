@@ -51,11 +51,11 @@ public class LoggerAspect {
         String className = joinPoint.getTarget().getClass().getSimpleName();
         String methodName = joinPoint.getSignature().getName();
 
-        LOGGER.info("Beginning to check if the data is valid in method: {} of class: {}." , methodName , className );
+        LOGGER.info("Beginning to check if the data is valid in method: {} of class: {}.", methodName, className);
 
         joinPoint.proceed();
 
-      LOGGER.info("Data validation completed successfully. The email data is valid and will now be sent.");
+        LOGGER.info("Data validation completed successfully. The email data is valid and will now be sent.");
 
     }
 
