@@ -29,7 +29,8 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-/logs/**
+/logs/app.log
+logs/app.log.2024-07-29.0.gz
 
 ### VS Code ###
 .vscode/
