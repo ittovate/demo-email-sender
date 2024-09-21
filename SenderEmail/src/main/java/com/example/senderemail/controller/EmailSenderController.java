@@ -7,12 +7,14 @@ import com.example.senderemail.utils.RestResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
 
 
 @RestController
@@ -45,15 +47,18 @@ public class EmailSenderController {
                     + "including the subject and body."
     )
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "When The Email Is Sent Successfully"),
-            @ApiResponse(responseCode = "401", description = "When An Authorization Error Occurred")
+            @ApiResponse(responseCode = "201", description = "When The Email Is Sent Successfully"),
+            @ApiResponse(responseCode = "400", description = "When An Authorization Error Occurred")
     })
 
-    @PostMapping("/send-email")
-    public RestResponse<Email> sendEmail(@RequestBody Email email) {
-        emailService.sendEmail(email);
 
-        return new RestResponse<>(email, HttpStatus.ACCEPTED);
+    @PostMapping("/send-email")
+    public ResponseEntity<RestResponse<Email>> sendEmail( @RequestBody Email email) {
+
+        emailService.validateEmailAndSend(email);
+        RestResponse<Email> response = new RestResponse<>(email, "Email has been sent successfully ", HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
+
 
 }

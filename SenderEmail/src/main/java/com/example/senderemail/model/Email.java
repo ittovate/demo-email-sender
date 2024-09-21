@@ -1,12 +1,19 @@
 package com.example.senderemail.model;
 
+
+
 public class Email {
+
+
 
     private final String body;
 
+
     private final String subject;
 
+
     private final String[] to;
+
 
     /**
      * @param body    represents the body of the email (String)

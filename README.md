@@ -1,3 +1,5 @@
+
+
 # SenderEmail
 ## Overview
  This project is designed to send emails to multiple users simultaneously to multiple recipients across different email platforms, including Gmail and Outlook.
@@ -211,5 +213,6 @@ The server will return a `400 Bad Request` error with an appropriate exception m
   "statusCode": "BAD_REQUEST"
 }
 ```
+
 
 
