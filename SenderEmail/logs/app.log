@@ -1,4 +1,4 @@
-2024-08-02T14:49:59.188+03:00  INFO 6745 --- [main] c.e.S.SenderEmailApplicationTests        : Starting SenderEmailApplicationTests using Java 22.0.2 with PID 6745 (started by mostafahussien in /home/mostafahussien/IdeaProjects/SenderEmail/SenderEmail)
+2024-08-02T14:49:59.188+03:00  INFO 6745 --- [main] c.e.S.SenderEmailDTOApplicationTests        : Starting SenderEmailApplicationTests using Java 22.0.2 with PID 6745 (started by mostafahussien in /home/mostafahussien/IdeaProjects/SenderEmail/SenderEmail)
 2024-08-02T14:49:59.189+03:00  INFO 6745 --- [main] c.e.S.SenderEmailApplicationTests        : No active profile set, falling back to 1 default profile: "default"
 2024-08-02T14:49:59.612+03:00  WARN 6745 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to process import candidates for configuration class [com.example.SenderEmail.SenderEmailApplication]: Error processing condition on org.springframework.boot.autoconfigure.mail.MailSenderAutoConfiguration
 2024-08-02T14:49:59.622+03:00  INFO 6745 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
@@ -4862,9 +4862,9 @@ com.example.senderemail.exception.EmailValidationException: Error : One or more 
 2024-08-05T20:26:52.987+03:00  INFO 146868 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2024-08-05T20:26:52.988+03:00  INFO 146868 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2024-08-05T20:26:52.996+03:00  INFO 146868 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
-2024-08-05T20:26:53.498+03:00 ERROR 146868 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalArgumentException: Invalid return type for async method (only Future and void supported): class com.example.senderemail.utils.RestResponse] with root cause
+2024-08-05T20:26:53.498+03:00 ERROR 146868 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalArgumentException: Invalid return type for async method (only Future and void supported): class com.example.senderemail.utils.APIResponse] with root cause
 
-java.lang.IllegalArgumentException: Invalid return type for async method (only Future and void supported): class com.example.senderemail.utils.RestResponse
+java.lang.IllegalArgumentException: Invalid return type for async method (only Future and void supported): class com.example.senderemail.utils.APIResponse
 	at org.springframework.aop.interceptor.AsyncExecutionAspectSupport.doSubmit(AsyncExecutionAspectSupport.java:301) ~[spring-aop-6.1.11.jar:6.1.11]
 	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.invoke(AsyncExecutionInterceptor.java:127) ~[spring-aop-6.1.11.jar:6.1.11]
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
@@ -4932,9 +4932,9 @@ java.lang.IllegalArgumentException: Invalid return type for async method (only F
 2024-08-05T20:39:08.448+03:00  INFO 147636 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2024-08-05T20:39:08.451+03:00  INFO 147636 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2024-08-05T20:39:08.457+03:00  INFO 147636 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
-2024-08-05T20:39:08.830+03:00 ERROR 147636 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalArgumentException: Invalid return type for async method (only Future and void supported): class com.example.senderemail.utils.RestResponse] with root cause
+2024-08-05T20:39:08.830+03:00 ERROR 147636 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalArgumentException: Invalid return type for async method (only Future and void supported): class com.example.senderemail.utils.APIResponse] with root cause
 
-java.lang.IllegalArgumentException: Invalid return type for async method (only Future and void supported): class com.example.senderemail.utils.RestResponse
+java.lang.IllegalArgumentException: Invalid return type for async method (only Future and void supported): class com.example.senderemail.utils.APIResponse
 	at org.springframework.aop.interceptor.AsyncExecutionAspectSupport.doSubmit(AsyncExecutionAspectSupport.java:301) ~[spring-aop-6.1.11.jar:6.1.11]
 	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.invoke(AsyncExecutionInterceptor.java:127) ~[spring-aop-6.1.11.jar:6.1.11]
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]

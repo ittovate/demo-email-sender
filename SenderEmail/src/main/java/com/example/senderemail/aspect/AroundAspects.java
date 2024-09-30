@@ -2,7 +2,7 @@ package com.example.senderemail.aspect;
 
 
 import com.example.senderemail.exception.EmailValidationException;
-import com.example.senderemail.utils.RestResponse;
+import com.example.senderemail.utils.APIResponse;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -13,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.CompletionException;
+
+import static com.example.senderemail.constant.AOPConstant.EXECUTION_TIME_MESSAGE;
 
 
 @Aspect
@@ -33,7 +35,7 @@ public class AroundAspects {
         long endTime = System.nanoTime();
         double durationInMilliseconds = (double) (endTime - startTime) / 1_000_000;
 
-        LOGGER.info("The duration time for the execution of the method {} in the class {} took {} milliseconds to execute", methodName, className, durationInMilliseconds);
+        LOGGER.info(EXECUTION_TIME_MESSAGE, methodName, className, durationInMilliseconds);
 
         return retVal;
     }

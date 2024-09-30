@@ -3,18 +3,9 @@ package com.example.senderemail.model;
 
 
 public class Email {
-
-
-
     private final String body;
-
-
     private final String subject;
-
-
     private final String[] to;
-
-
     /**
      * @param body    represents the body of the email (String)
      * @param subject represents the subject of the email (String)
@@ -25,17 +16,12 @@ public class Email {
         this.subject = subject;
         this.to = to;
     }
-
     public String getBody() {
         return body;
     }
-
-
     public String getSubject() {
         return subject;
     }
-
-
     public String[] getTo() {
         return to;
     }

@@ -1,6 +1,6 @@
 package com.example.senderemail.exception;
 
-import com.example.senderemail.utils.RestResponse;
+import com.example.senderemail.utils.APIResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -13,9 +13,10 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.example.senderemail.constant.ValidationConstant.GENERAL_EXCEPTION_HANDLER_MESSAGE;
+
 @ControllerAdvice
 public class GlobalExceptionHandler {
-
 
 
     /**
@@ -25,14 +26,12 @@ public class GlobalExceptionHandler {
      * @return ResponseEntity<ErrorResponse>
      */
     @ExceptionHandler(EmailValidationException.class)
-    public ResponseEntity<RestResponse<String>> handleEmailValidationException(EmailValidationException ex) {
-        RestResponse<String> response = new RestResponse<>(null, ex.getMessage(), HttpStatus.BAD_REQUEST);
-        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    public APIResponse<String> handleEmailValidationException(EmailValidationException ex) {
+        return new APIResponse<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<RestResponse<String>> handleGenericException(Exception ex) {
-        RestResponse<String> response = new RestResponse<>(null, "An unexpected error occurred.", HttpStatus.INTERNAL_SERVER_ERROR);
-        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+    public APIResponse<String> handleGenericException(Exception ex) {
+        return new APIResponse<>(GENERAL_EXCEPTION_HANDLER_MESSAGE, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

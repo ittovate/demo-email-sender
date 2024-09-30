@@ -11,20 +11,23 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableAsync;
 
+import static com.example.senderemail.constant.SwaggerConstant.*;
+
 @SuppressWarnings("checkstyle:HideUtilityClassConstructor")
 @SpringBootApplication
 @OpenAPIDefinition(
         info = @Info(
-                title = "Demo Email Sender",
-                description = "Very basic Demo",
+                title = TITLE,
+                description = DESCRIPTION,
                 contact = @Contact(
-                        email = "mostafadfrg@gmail.com",
-                        name = "Mostafa Hussein"
+                        email = CONTACT_EMAIL,
+                        name = CONTACT_NAME,
+                        url = CONTACT_URL
                 ),
-                version = "0.0.1"
+                version = VERSION
         ),
         servers = {
-                @Server(url = "http://localhost:8080", description = "Development Server")
+                @Server(url = DEVELOPMENT_SERVER_URL, description = DEVELOPMENT_SERVER_DESCRIPTION)
         }
 )
 @EnableAsync

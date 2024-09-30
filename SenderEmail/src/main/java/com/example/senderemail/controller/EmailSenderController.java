@@ -3,7 +3,7 @@ package com.example.senderemail.controller;
 
 import com.example.senderemail.model.Email;
 import com.example.senderemail.service.EmailService;
-import com.example.senderemail.utils.RestResponse;
+import com.example.senderemail.utils.APIResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -16,48 +16,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.ResponseEntity;
 
+import static com.example.senderemail.constant.SwaggerConstant.*;
+
 
 @RestController
 @RequestMapping("/email")
 public class EmailSenderController {
-
-
     private final EmailService emailService;
-
 
     /**
      * @param emailService injection of the email service
      */
-    public EmailSenderController(@Autowired EmailService emailService) {
+    public EmailSenderController(EmailService emailService) {
         this.emailService = emailService;
     }
 
 
     /**
      * @param email represents the email entity
-     * @return RestResponse<email>
+     * @return APIResponse<email>
      */
     @Operation(
-            method = "POST",
-            summary = "Send Email",
-            description = "This endpoint allows you to send an email to one or more recipients. "
-                    + "The email must include a subject and a body. "
-                    + "The request body should contain the list of recipient email addresses in the to field, "
-                    + "which must include at least one email address, and the content of the email, "
-                    + "including the subject and body."
+            method = METHOD_POST,
+            summary = SEND_EMAIL_SUMMARY,
+            description = SEND_EMAIL_DESCRIPTION
     )
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "When The Email Is Sent Successfully"),
-            @ApiResponse(responseCode = "400", description = "When An Authorization Error Occurred")
+            @ApiResponse(responseCode = SEND_EMAIL_STATUS_OK, description = SEND_EMAIL_STATUS_OK_DESCRIPTION),
+            @ApiResponse(responseCode = SEND_EMAIL_STATUS_BAD_REQUEST, description = SEND_EMAIL_STATUS_BAD_REQUEST_DESCRIPTION)
     })
 
 
     @PostMapping("/send-email")
-    public ResponseEntity<RestResponse<Email>> sendEmail( @RequestBody Email email) {
+    public APIResponse<Email> sendEmail(@RequestBody Email email) {
 
         emailService.validateEmailAndSend(email);
-        RestResponse<Email> response = new RestResponse<>(email, "Email has been sent successfully ", HttpStatus.ACCEPTED);
-        return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
+        return new APIResponse<>(email, SEND_EMAIL_RESPONSE_MESSAGE, HttpStatus.ACCEPTED);
     }
 
 

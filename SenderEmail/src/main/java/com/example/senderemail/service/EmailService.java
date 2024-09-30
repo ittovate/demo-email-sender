@@ -21,7 +21,6 @@ public class EmailService {
      * @param mailSender     email sender class responsible for sending the email
      * @param emailValidator utility class to validate email strings
      */
-    @Autowired
     public EmailService(JavaMailSender mailSender, EmailValidations emailValidator) {
         this.mailSender = mailSender;
         this.emailValidator = emailValidator;
@@ -52,7 +51,7 @@ public class EmailService {
         message.setTo(email.getTo());
         message.setSubject(email.getSubject());
         message.setText(email.getBody());
-        mailSender.send(message);
+//        mailSender.send(message);
     }
 
     public String getUsername() {

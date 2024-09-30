@@ -9,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import static com.example.senderemail.constant.AOPConstant.*;
+
 /**
  * This class is an Aspect component used for logging method executions and exceptions in the application.
  * It uses Aspect-Oriented Programming (AOP) .
@@ -37,7 +39,7 @@ public class LoggerAspect {
     public void logAfterThrowing(JoinPoint joinPoint, Throwable ex) {
         String methodName = joinPoint.getSignature().getName();
         String className = joinPoint.getTarget().getClass().getName();
-        LOGGER.error("Exception: From method : From method : ' {} ' in class : ' {} '  , message exception : {}",
+        LOGGER.error(AFTER_THROWING_LOGGER_MESSAGE,
                 methodName, className, ex.getMessage());
     }
 
@@ -51,11 +53,11 @@ public class LoggerAspect {
         String className = joinPoint.getTarget().getClass().getSimpleName();
         String methodName = joinPoint.getSignature().getName();
 
-        LOGGER.info("Beginning to check if the data is valid in method: {} of class: {}." , methodName , className );
+        LOGGER.info(AROUND_VALIDATING_EMAILS_MESSAGE, methodName, className);
 
         joinPoint.proceed();
 
-      LOGGER.info("Data validation completed successfully. The email data is valid and will now be sent.");
+        LOGGER.info(AROUND_VALIDATING_EMAILS_SUCCESS_MESSAGE);
 
     }
 

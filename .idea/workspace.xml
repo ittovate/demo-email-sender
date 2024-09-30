@@ -40,6 +40,9 @@
     &quot;accountId&quot;: &quot;277f8019-bc17-4bb3-ad2a-064e67cb7657&quot;
   }
 }</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -64,13 +67,16 @@
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "Spring Boot.SenderEmailApplication (1).executor": "Run",
     "Spring Boot.SenderEmailApplication.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
     "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "#6 on feature/Execption",
+    "git-widget-placeholder": "develop",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/mustafa/PhpstormProjects/Demos/SenderEmail",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -83,7 +89,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.SenderEmailApplication">
     <configuration name="SenderEmailApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="SenderEmail" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.SenderEmail.SenderEmailApplication" />
@@ -91,6 +97,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SenderEmailApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <envs>
+        <env name="HOST" value="smtp.gmail.com" />
+        <env name="PORT" value="587" />
+        <env name="USERNAME" value="mostafadfrg@gmail.com" />
+        <env name="PASSWORD" value="qzbcgpgalkqvipki" />
+      </envs>
+      <module name="senderemail" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.senderemail.SenderEmailApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.SenderEmailApplication" />
+      <item itemvalue="Spring Boot.SenderEmailApplication (1)" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
