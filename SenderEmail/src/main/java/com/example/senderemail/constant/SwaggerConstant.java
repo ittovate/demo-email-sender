@@ -12,6 +12,8 @@ public class SwaggerConstant {
 
     //================================================= Email Sender Controller =================================================//
 
+    public static final String CONTROLLER_NAME= "Email Sender Controller";
+    public static final String CONTROLLER_DESCRIPTION= "This controller is used to send emails";
     public static final String METHOD_POST = "POST";
     public static final String SEND_EMAIL_SUMMARY = "Send Email";
 
@@ -24,7 +26,7 @@ public class SwaggerConstant {
     public static final String SEND_EMAIL_STATUS_OK = "201";
     public static final String SEND_EMAIL_STATUS_OK_DESCRIPTION = "When The Email Is Sent Successfully";
 
-    public static final String SEND_EMAIL_STATUS_BAD_REQUEST = "201";
+    public static final String SEND_EMAIL_STATUS_BAD_REQUEST = "400";
     public static final String SEND_EMAIL_STATUS_BAD_REQUEST_DESCRIPTION = "When The Email Is Sent Successfully";
     public static final String SEND_EMAIL_RESPONSE_MESSAGE ="Email has been sent successfully ";
 

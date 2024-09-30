@@ -4,9 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="319aad73-5159-45eb-b010-c31d54cd0ac6" name="Changes" comment="Added: dependency for Actuator">
-      <change afterPath="$PROJECT_DIR$/SenderEmail/src/main/java/com/example/SenderEmail/utils/validations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SenderEmail/src/main/java/com/example/SenderEmail/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/SenderEmail/src/main/java/com/example/SenderEmail/service/EmailService.java" afterDir="false" />
+    <list default="true" id="319aad73-5159-45eb-b010-c31d54cd0ac6" name="Changes" comment="fix: clean code related issues">
+      <change afterPath="$PROJECT_DIR$/SenderEmail/src/main/java/com/example/senderemail/utils/ResponseUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SenderEmail/logs/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/SenderEmail/logs/app.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SenderEmail/src/main/java/com/example/senderemail/constant/SwaggerConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/SenderEmail/src/main/java/com/example/senderemail/constant/SwaggerConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SenderEmail/src/main/java/com/example/senderemail/constant/ValidationConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/SenderEmail/src/main/java/com/example/senderemail/constant/ValidationConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SenderEmail/src/main/java/com/example/senderemail/controller/EmailSenderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SenderEmail/src/main/java/com/example/senderemail/controller/EmailSenderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SenderEmail/src/main/java/com/example/senderemail/exception/EmailValidationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/SenderEmail/src/main/java/com/example/senderemail/exception/EmailValidationException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SenderEmail/src/main/java/com/example/senderemail/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/SenderEmail/src/main/java/com/example/senderemail/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SenderEmail/src/main/java/com/example/senderemail/model/Email.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SenderEmail/src/main/java/com/example/senderemail/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/SenderEmail/src/main/java/com/example/senderemail/service/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SenderEmail/src/main/java/com/example/senderemail/utils/APIResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/SenderEmail/src/main/java/com/example/senderemail/utils/APIResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SenderEmail/src/main/java/com/example/senderemail/utils/EmailValidations.java" beforeDir="false" afterPath="$PROJECT_DIR$/SenderEmail/src/main/java/com/example/senderemail/utils/EmailValidations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SenderEmail/src/test/java/com/example/senderemail/utils/TestEmailValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/SenderEmail/src/test/java/com/example/senderemail/utils/TestEmailValidation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +216,8 @@
     <MESSAGE value="Added: JavaDocs for your classes and methods" />
     <MESSAGE value="Added: endpoint to monitoring Application  performance" />
     <MESSAGE value="Added: dependency for Actuator" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added: dependency for Actuator" />
+    <MESSAGE value="fix: clean code related issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: clean code related issues" />
   </component>
   <component name="WfRunsListSearchHistory">{
   &quot;history&quot;: [

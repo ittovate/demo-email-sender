@@ -1,6 +1,6 @@
 package com.example.senderemail.utils;
 
-import com.example.senderemail.model.Email;
+import com.example.senderemail.dto.EmailDTO;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -108,19 +108,19 @@ class TestEmailValidation {
 
     private static Stream<Arguments> emailProvider() {
         return Stream.of(
-                Arguments.of(new Email("test body", "test subject", new String[]{"test@example.com"})),
-                Arguments.of(new Email("test body", "test subject", new String[]{"test@example.com",})),
-                Arguments.of(new Email("test body", "test subject", new String[]{"x@example.com",})),
-                Arguments.of(new Email("test body", "test subject", new String[]{"example@s.example",})),
-                Arguments.of(new Email("test body", "test subject", new String[]{"john.doe\"@example.com",})),
-                Arguments.of(new Email("test body", "test subject", new String[]{"firstname.lastname@example.com",})),
-                Arguments.of(new Email("test body", "test subject", new String[]{"email@subdomain.example.com",})),
-                Arguments.of(new Email("test body", "test subject", new String[]{"user@domain.com",}))
+                Arguments.of(new EmailDTO("test body", "test subject", new String[]{"test@example.com"})),
+                Arguments.of(new EmailDTO("test body", "test subject", new String[]{"test@example.com",})),
+                Arguments.of(new EmailDTO("test body", "test subject", new String[]{"x@example.com",})),
+                Arguments.of(new EmailDTO("test body", "test subject", new String[]{"example@s.example",})),
+                Arguments.of(new EmailDTO("test body", "test subject", new String[]{"john.doe\"@example.com",})),
+                Arguments.of(new EmailDTO("test body", "test subject", new String[]{"firstname.lastname@example.com",})),
+                Arguments.of(new EmailDTO("test body", "test subject", new String[]{"email@subdomain.example.com",})),
+                Arguments.of(new EmailDTO("test body", "test subject", new String[]{"user@domain.com",}))
         );
     }
     @ParameterizedTest
     @MethodSource("emailProvider")
-    void validEmailObjects(Email email) {
+    void validEmailObjects(EmailDTO email) {
         assertDoesNotThrow(() -> validations.isEmailDataValid(email));
     }
 

@@ -1,7 +1,7 @@
 package com.example.senderemail.utils;
 
+import com.example.senderemail.dto.EmailDTO;
 import com.example.senderemail.exception.EmailValidationException;
-import com.example.senderemail.model.Email;
 import org.springframework.stereotype.Component;
 
 import java.util.regex.Pattern;
@@ -18,7 +18,7 @@ public class EmailValidations {
      * @return whether all the emails are valid or not.
      */
     public boolean areValidEmails(String[] emails) {
-        if (emails == null) {
+        if (emails == null || emails.length == 0) {
             return false;
         }
 
@@ -41,7 +41,7 @@ public class EmailValidations {
         if (email == null) {
             return false;
         }
-        String emailRegex = EMAIL_VALIDATION_REGEX;
+        String emailRegex = "^((?!\\.)[\\w\\-_.]*[^.])(@\\w+)(\\.\\w+(\\.\\w+)?[^.\\W])$";
         Pattern pattern = Pattern.compile(emailRegex);
         return pattern.matcher(email.toLowerCase()).matches();
     }
@@ -57,14 +57,14 @@ public class EmailValidations {
      * @param email email entity to be validated
      * @throws EmailValidationException if any validation fails
      */
-    public void isEmailDataValid(Email email) {
-        if (email.getBody() == null || email.getBody().trim().isEmpty()) {
+    public void isEmailDataValid(EmailDTO email) {
+        if (email.body() == null || email.body().trim().isEmpty()) {
             throw new EmailValidationException(EMAIL_VALIDATION_EMPTY_EMAIL_MESSAGE);
         }
-        if (email.getSubject() == null || email.getSubject().trim().isEmpty()) {
+        if (email.subject() == null || email.subject().trim().isEmpty()) {
             throw new EmailValidationException(EMAIL_VALIDATION_EMPTY_SUBJECT_MESSAGE);
         }
-        if (!this.areValidEmails(email.getTo())) {
+        if (!this.areValidEmails(email.to())) {
             throw new EmailValidationException(EMAIL_VALIDATION_INVALID_MESSAGE);
         }
     }

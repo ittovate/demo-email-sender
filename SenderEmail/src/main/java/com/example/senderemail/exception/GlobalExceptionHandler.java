@@ -27,11 +27,11 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(EmailValidationException.class)
     public APIResponse<String> handleEmailValidationException(EmailValidationException ex) {
-        return new APIResponse<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+        return new APIResponse<>(null,ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)
     public APIResponse<String> handleGenericException(Exception ex) {
-        return new APIResponse<>(GENERAL_EXCEPTION_HANDLER_MESSAGE, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new APIResponse<>(null, GENERAL_EXCEPTION_HANDLER_MESSAGE, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
